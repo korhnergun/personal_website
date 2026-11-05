@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Korhan Ergün Tunçelli | Kişisel Website</title>
+    <meta name="description" content="Kişisel portfolyo websitesi" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <!-- Navbar (buzlu cam) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Ana Sayfa</a></li>
+                <li><a href="#about" class="nav-link">Hakkımda</a></li>
+                <li><a href="#experience" class="nav-link">Deneyimlerim</a></li>
+                <li><a href="#skills" class="nav-link">Yeteneklerim</a></li>
+                <li><a href="#projects" class="nav-link">Projelerim</a></li>
+                <li><a href="#designs" class="nav-link">Tasarımlarım</a></li>
+                <li><a href="#contact" class="nav-link">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir">
+                    <i class="fa-solid fa-moon icon-dark"></i>
+                    <i class="fa-solid fa-sun icon-light"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Ana Sayfa -->
+    <section id="home" class="hero">
+        <!-- Saydam arka plan görseli — yalnızca bu bölümde görünür -->
+        <div class="bg-overlay" id="bgOverlay"></div>
+
+        <div class="hero-content">
+            <p class="hero-greeting">Merhaba, ben</p>
+            <h1 class="hero-name">Korhan Ergün TUNÇELLİ</h1>
+            <h2 class="hero-title">
+                <span class="typed-text" id="typedText"></span><span class="cursor">|</span>
+            </h2>
+
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fa-solid fa-code"></i>
+                    Projelerimi Gör
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fa-solid fa-envelope"></i>
+                    İletişime Geç
+                </a>
+            </div>
+
+            <div class="hero-socials">
+                <a href="https://github.com/korhnergun" aria-label="GitHub" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/korhnergun/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/korhnergun" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <a href="#about" class="scroll-down" aria-label="Aşağı kaydır">
+            <span class="mouse"><span class="wheel"></span></span>
+            <span class="scroll-text">Kaydır</span>
+        </a>
+    </section>
+
+    <!-- Hakkımda -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">01.</span>
+                <h2 class="section-title">Hakkımda</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="about-image-frame">
+                        <img src="assets/images/profilresmi2.jpeg" alt="Profil fotoğrafı" id="profileImg" />
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>
+                        Tekirdağ Namık Kemal Üniversitesi'nden 3.31 GPA ile mezun oldum.
+                        Yazılım geliştirme ve tasarım alanlarında kendimi sürekli geliştirmeye
+                        devam ediyorum. Projelerim ve deneyimlerim hakkında daha fazla bilgi edinmek için aşağı kaydırabilirsiniz.
+                    </p>
+                    <p>
+                        Güncel olarak Web Yazılım Geliştirm, Backend Yazılım Geliştirme, Veritabanı alanlarıyla ilgileniyorum. Teknolojilere olan tutkum, problem çözme becerilerim ve yaratıcı yaklaşımım sayesinde
+                        her zaman yeni zorluklara hazırım. Takım çalışmasına inanıyorum ve birlikte harika şeyler başarabileceğimize inanıyorum.
+                    </p>
+
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span class="info-label">Ad</span>
+                            <span class="info-value">Korhan Ergün TUNÇELLİ</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">E-posta</span>
+                            <span class="info-value">korhanergunt2@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Konum</span>
+                            <span class="info-value">İzmir, Türkiye</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Durum</span>
+                            <span class="info-value status-available">
+                                <span class="status-dot"></span>Müsait
+                            </span>
+                        </div>
+                    </div>
+
+                    <a href="Korhan%20Erg%C3%BCn%20TUN%C3%87ELL%C4%B0%20CV.pdf" class="btn btn-primary" download>
+                        <i class="fa-solid fa-download"></i>
+                        CV İndir
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deneyimlerim -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">02.</span>
+                <h2 class="section-title">Deneyimlerim</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Temmuz 2024 - Ağustos 2024</span>
+                        <h3 class="timeline-title">Yazılım Geliştirme Yaz Stajı</h3>
+                        <h4 class="timeline-company">CEIBA Tele ICU</h4>
+                        <p>
+                            HTML, CSS, JavaScript ve React.js kullanarak frontend geliştirme üzerinde çalıştım.
+                            Sitede birçok sayfa (doktor notları, hemşire notları, hasta verileri vb.) bulunuyor ve bu sayfalarda
+                            veri girişleri ve not bölümleri içeren tablolar yer alıyor.
+                            Ayrıca Yarn, Azure DevOPS, Sublime Merge, Git vb. kullanarak ekip içinde çalışma deneyimi kazandım.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">HTML, CSS, JavaScript, React.js</span>
+                            <span class="tag">Yarn, Azure, DevOPS</span>
+                            <span class="tag">Git, Github</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Şubat 2024 - Haziran 2024</span>
+                        <h3 class="timeline-title">Uzun Dönem Staj</h3>
+                        <h4 class="timeline-company">Turkcell Global Bilgi</h4>
+                        <p>
+                            Müşteri faturalama süreçlerini optimize etmek ve ilgili şikayetleri ele almak için Python ve SQL tabanlı çözümler oluşturdum.
+                            Makine öğrenimi algoritmaları kullanılarak veri analizi ve tahmin projeleri yürüttüm.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">MSSQL</span>
+                            <span class="tag">Yapay Zeka</span>
+                            <span class="tag">Agile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Ağustos 2022 - Eylül 2022</span>
+                        <h3 class="timeline-title">IT Yaz Stajı</h3>
+                        <h4 class="timeline-company">BorgWarner</h4>
+                        <p>
+                            Çalışma, ağ protokolleri, sistem kurulumları ve Raspberry Pi uygulamaları da dahil olmak üzere donanım-yazılım entegrasyonunu içeriyordu.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">Raspberry Pi</span>
+                            <span class="tag">HTTPS, Ağ Protokolleri</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yeteneklerim -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">03.</span>
+                <h2 class="section-title">Yeteneklerim</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="skills-grid" id="skillsGrid">
+                <!-- JS ile doldurulacak -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projelerim (GitHub) -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">04.</span>
+                <h2 class="section-title">Projelerim</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="projects-header">
+                <p class="projects-intro">
+                    GitHub hesabımdaki en güncel projeler.
+                </p>
+                <a href="#" id="githubProfileLink" class="btn btn-ghost" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github"></i>
+                    GitHub Profilim
+                </a>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- JS ile GitHub API'sinden doldurulacak -->
+                <div class="loader" id="projectsLoader">
+                    <div class="spinner"></div>
+                    <p>Projeler yükleniyor...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tasarımlarım (kart yapısı) -->
+    <section id="designs" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">05.</span>
+                <h2 class="section-title">Tasarımlarım</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <p class="designs-intro">
+                Kişisel olarak yaptığım çizim ve tasarımlardan seçkiler.
+            </p>
+
+            <div class="designs-grid" id="designsGrid">
+                <!-- JS ile doldurulacak -->
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">06.</span>
+                <h2 class="section-title">İletişim</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Bana ulaşmak için..</h3>
+                    <p>
+                        Yeni projeler, iş birlikleri veya sadece merhaba demek için
+                        çekinmeden ulaşabilirsiniz.
+                    </p>
+
+                    <div class="contact-methods">
+                        <a href="https://www.linkedin.com/in/korhnergun/" class="contact-method" target="_blank" rel="noopener">
+                            <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                            <div class="contact-text">
+                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-value">linkedin.com/in/korhnergun</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/korhnergun" class="contact-method" target="_blank" rel="noopener">
+                            <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                            <div class="contact-text">
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">github.com/korhnergun</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/korhanergunt2@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Kişisel Site — Yeni İletişim Mesajı" />
+                    <input type="hidden" name="_template" value="table" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+                    <div class="form-group">
+                        <label for="name">Adınız</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-postanız</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesajınız</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="contactSubmit">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span class="btn-label">Gönder</span>
+                    </button>
+                    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> korhanerguntuncelli.com.tr — Tüm hakları saklıdır.</p>
+            <p class="footer-small">developed by Korhan Ergün TUNÇELLİ</p>
+        </div>
+    </footer>
+
+    <!-- Yukarı Dön Butonu -->
+    <button id="scrollToTopBtn" aria-label="En üste dön">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <script src="js/script.js"></script>
+</body>
+</html>
