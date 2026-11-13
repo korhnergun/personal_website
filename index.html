@@ -1,351 +1,684 @@
-<!DOCTYPE html>
-<html lang="tr" data-theme="dark">
+<!doctype html>
+<html lang="tr" data-type="software" data-radius="round" data-ground="sky" data-buttons="pill" data-motion>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Korhan Ergün Tunçelli | Kişisel Website</title>
-    <meta name="description" content="Kişisel portfolyo websitesi" />
-    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Korhan Ergün TUNÇELLİ: bilgisayar mühendisi, web ve backend geliştirici</title>
+<meta name="description" content="İzmir'de C#, ASP.NET MVC ve React ile web uygulamaları geliştiren, NKÜ mezunu bilgisayar mühendisinin özgeçmişi, projeleri ve tasarımları.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Korhan Ergün TUNÇELLİ: bilgisayar mühendisi">
+<meta property="og:description" content="Web ve backend geliştirici; stajlar, projeler, yetenekler ve tasarımlar.">
+<meta property="og:image" content="https://www.korhanerguntuncelli.com/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#F4F6F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1416" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://www.korhanerguntuncelli.com/">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
+<!-- the visitor's theme before the first paint: their saved choice, else the device setting -->
+<script>(function(){var t;try{t=localStorage.getItem('tema')}catch(e){}if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<!-- the client's own palette (grafit, turkuaz, kehribar) through start.mjs brand; the dark set is its night grade -->
+<style>
+:root {
+  --p-bg: #f4f6f6; --p-surface: #e8ecec; --p-ink: #111827; --p-muted: #5a6472;
+  --p-accent: #0e7c86; --p-accent-ink: #ffffff; --p-action: #0e7c86; --p-action-ink: #ffffff;
+  --p-inv-bg: #111827; --p-inv-surface: #1b2230; --p-inv-ink: #f4f6f6; --p-inv-muted: #a3aab4;
+  --p-inv-accent: #2dd4bf; --p-inv-accent-ink: #0f1416; --p-inv-action: #2dd4bf; --p-inv-action-ink: #0f1416;
+  --font-display: "Host Grotesk", system-ui, sans-serif;
+  --font-text: "Host Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 500;
+  --display-tracking: -0.035em;
+  --display-tracking-xl: -0.04em;
+  /* the second accent: kehribar, for dates and the live dot */
+  --amber: #f59e0b; --amber-soft: #fdebc8; --amber-text: #8a5300;
+  --glass: rgb(255 255 255 / .62); --glass-line: rgb(255 255 255 / .75); --glass-hi: rgb(255 255 255 / .9); --glass-shadow: 0 10px 34px rgb(17 24 39 / .12);
+}
+html[data-theme="dark"] {
+  --p-bg: #0f1416; --p-surface: #161d20; --p-ink: #e6ecec; --p-muted: #93a0a2;
+  --p-accent: #2dd4bf; --p-accent-ink: #0f1416; --p-action: #2dd4bf; --p-action-ink: #0f1416;
+  --p-inv-bg: #182124; --p-inv-surface: #202b2f; --p-inv-ink: #e6ecec; --p-inv-muted: #9aa7a9;
+  --amber: #fbbf24; --amber-soft: #33270b; --amber-text: #fcd34d;
+  --glass: rgb(22 29 32 / .58); --glass-line: rgb(255 255 255 / .12); --glass-hi: rgb(255 255 255 / .10); --glass-shadow: 0 10px 34px rgb(0 0 0 / .45);
+  color-scheme: dark;
+}
+</style>
+<link rel="stylesheet" href="assets/ui/base.css">
+<link rel="stylesheet" href="assets/ui/terminal-run/fragment.css">
+<link rel="stylesheet" href="assets/ui/files/fragment.css">
+<link rel="stylesheet" href="assets/ui/checklist/fragment.css">
+<link rel="stylesheet" href="assets/diagrams/diagram.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
+<link rel="modulepreload" href="assets/moments/iris-opens/moment.js">
+<style>
+  /* the floating glass bar (the client's ask: a rounded, floating liquid-glass bar) */
+  header.nav { background: transparent; border-bottom: 0; top: 12px; height: 64px; pointer-events: none; }
+  header.nav > .nav__bar { pointer-events: auto; height: 64px; gap: var(--s-5);
+    width: min(100% - 2 * var(--gut) + 2 * var(--pill-pad), 1280px + 2 * var(--pill-pad)); padding: 0 var(--pill-pad); --pill-pad: 20px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-line);
+    -webkit-backdrop-filter: blur(22px) saturate(1.8); backdrop-filter: blur(22px) saturate(1.8);
+    box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-hi); }
+  @media (min-width: 1024px) { header.nav.nav--centre > .nav__bar { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); } .nav__theme.nav__theme--phone { display: none; } }
+  .nav__link { border-radius: 999px; }
+  /* the section you are on: a pill slides under its word as you move down the page (the client's ask, Instagram's tab bar) */
+  .nav__links { position: relative; }
+  .nav__ind { position: absolute; left: 0; top: 50%; height: 40px; width: 0; margin-top: -20px; border-radius: 999px; pointer-events: none; z-index: 0; opacity: 0;
+    background: var(--accent); box-shadow: 0 6px 18px -6px color-mix(in oklab, var(--accent) 70%, transparent);
+    transform-origin: left center; transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .3s ease; }
+  .nav__ind.is-on { opacity: 1; }
+  .nav__item { position: relative; z-index: 1; }
+  /* no line under any word: the pill alone marks the section, and the words only change colour on hover */
+  header.nav .nav__link::before, header.nav .nav__link::after { content: none !important; }
+  header.nav .nav__link:not(.is-here):hover { color: var(--accent); }
+  .nav__link { transition: color .3s ease; }
+  @media (min-width: 1024px) and (max-width: 1279px) { header.nav .nav__link { padding-inline: 10px; font-size: 14px; } header.nav.nav--centre > .nav__bar { gap: var(--s-3); grid-template-columns: auto minmax(0, 1fr) auto; } }
+  .nav__link.is-here, .nav__link.is-here:hover { color: var(--accent-ink); }
+  @media (max-width: 1023px) { .nav__ind { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .nav__ind { transition: opacity .2s; } }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet"
-    />
+  .nav__actions { gap: var(--s-2); }
+  .nav__theme { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: transparent; color: var(--ink); cursor: pointer; flex: none; }
+  .nav__theme svg { width: 18px; height: 18px; }
+  .nav__theme .i-sun, html[data-theme="dark"] .nav__theme .i-moon { display: none; }
+  html[data-theme="dark"] .nav__theme .i-sun { display: block; }
+  @media (max-width: 1399px) { .nav__logo .nav__name { display: none; } }
+  @media (max-width: 1023px) { header.nav > .nav__bar { --pill-pad: 12px; } .nav__theme--phone { margin-left: auto; } .nav__theme--phone + .nav__toggle { margin-left: var(--s-2); } }
+  @media (max-width: 639px) { header.nav { top: 8px; height: 56px; } header.nav > .nav__bar { height: 56px; } header.nav.nav--centre > .nav__bar > .nav__actions { display: none; } }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  .about__term, #projeler .frame--split { --action: var(--ground-ink); --ink: var(--ground-ink); }
+  html[data-theme="dark"] .footer--statement { background: #1d3b3a; --bg: #1d3b3a; --surface: #24504d; --ink: #e6ecec; --muted: #a9bcbb; --line: rgb(230 236 236 / .14); --line-strong: rgb(230 236 236 / .28); --action: var(--p-action); --action-ink: var(--p-action-ink); color: var(--ink); }
 
-    <link rel="stylesheet" href="css/styles.css" />
+  /* hero */
+
+  /* on phones and tablets the sections ride a floating glass tab bar at the foot (Instagram's), its pill sliding to the section you are on */
+  .tabbar { display: none; }
+  @media (max-width: 1023px) {
+    :root { --bar: calc(76px + env(safe-area-inset-bottom)); }
+    .tabbar { display: flex; position: fixed; z-index: 40; left: 50%; bottom: calc(10px + env(safe-area-inset-bottom)); transform: translateX(-50%); width: min(100% - 16px, 520px); height: 60px; padding: 5px; gap: 0;
+      border-radius: 999px; background: color-mix(in oklab, var(--bg) 86%, transparent); border: 1px solid var(--glass-line); -webkit-backdrop-filter: blur(22px) saturate(1.8); backdrop-filter: blur(22px) saturate(1.8); box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-hi); }
+    .tabbar__a { position: relative; z-index: 1; flex: 1 1 0; min-width: 0; display: grid; place-items: center; align-content: center; gap: 2px; border-radius: 999px; color: color-mix(in oklab, var(--ink) 82%, var(--bg)); font-size: 10px; font-weight: 500; line-height: 1.1; transition: color .3s; }
+    .tabbar__a svg { width: 21px; height: 21px; }
+    .tabbar__a span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .tabbar__a.is-here { color: var(--accent-ink); }
+    .tabbar__ind { position: absolute; left: 0; top: 5px; bottom: 5px; width: 0; border-radius: 999px; z-index: 0; opacity: 0; transform-origin: left center;
+      background: var(--accent); box-shadow: 0 6px 18px -6px color-mix(in oklab, var(--accent) 70%, transparent); transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .3s; }
+    .tabbar__ind.is-on { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) { .tabbar__ind { transition: opacity .2s; } }
+  /* a ticked item is done, not cancelled: no line through it */
+  .ui-check__label::after { content: none !important; }
+
+  /* each section's own name in the accent, in both themes (the client's ask); its grey half stays grey */
+  main .section-head h2 { color: var(--accent); }
+  main .section-head h2 .muted { color: var(--muted); }
+
+  /* moving between sections from the bars: the jump stays instant (layout-v4: every section lands on its own screen),
+     and a view transition dresses it. The bars are their own layers: only their final state is drawn, so no old pill
+     lingers. Reduced motion: the plain jump. */
+  header.nav { view-transition-name: topbar; }
+  .tabbar { view-transition-name: tabbar; }
+  ::view-transition-old(topbar), ::view-transition-old(tabbar) { display: none; }
+  ::view-transition-group(topbar), ::view-transition-group(tabbar), ::view-transition-new(topbar), ::view-transition-new(tabbar) { animation: none; }
+  /* derinlik (the client's pick): the old view sinks back, the new section comes forward; quick, so a second tap is never kept waiting */
+  ::view-transition { pointer-events: none; }
+  ::view-transition-old(root) { animation: vt-depth-out .2s cubic-bezier(.4,0,1,1) both; }
+  ::view-transition-new(root) { animation: vt-depth-in .34s cubic-bezier(.22,1,.36,1) .04s both; }
+  @keyframes vt-depth-out { to { opacity: 0; transform: scale(.94); } }
+  @keyframes vt-depth-in { from { opacity: 0; transform: scale(1.04); } }
+  @media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; } }
+
+  /* the hero: typed title, ringed buttons, the portrait with its tilted orbit */
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .hero--split .hero__grid { align-items: start; }
+  .hero--split .hero__text { align-self: start; }
+  .hero--split .orbit { align-self: start; }
+  .hero__hi { display: block; font-size: 0.36em; line-height: 1.25; letter-spacing: -0.015em; font-weight: 400; margin-bottom: 0.25em; }
+  .hero__name { color: var(--accent); }
+  .hero__kick { display: inline-flex; align-items: center; gap: var(--s-2); margin: 0 0 var(--s-5); font-size: var(--t-small); font-weight: 500; padding: 6px 12px 6px 10px; border-radius: 99px; border: 1px solid var(--line-strong); }
+  .hero__kick i { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+  /* the typed title */
+  .hero__typed { margin: var(--s-4) 0 0; font: 500 clamp(22px, 1.2vw + 14px, 30px)/1.2 var(--font-mono); letter-spacing: -0.02em; color: var(--accent); min-height: 1.2em; display: flex; align-items: center; }
+  .caret { display: inline-block; width: 2px; height: 1.05em; margin-left: 4px; background: var(--amber); animation: caret 1s steps(1) infinite; }
+  .hero__typed.is-done .caret { animation: none; opacity: 0; transition: opacity .4s; }
+  @keyframes caret { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .caret { display: none; } }
+
+  /* buttons: a band of light runs round the edge while pointed at (its own element: the kit's
+     chevron keeps ::after); the band keeps turning underneath, so leaving never makes it jump */
+  @property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+  .ringbtn { position: relative; isolation: isolate; --ring-a: var(--amber); --ring-b: var(--accent); }
+  .ringbtn.btn--primary { --ring-a: #ffffff; --ring-b: var(--amber); }
+  html[data-theme="dark"] .ringbtn.btn--primary { --ring-a: #0f1416; --ring-b: #ffffff; }
+  .ringbtn__ring { position: absolute; inset: -3px; border-radius: inherit; padding: 2px; pointer-events: none; z-index: 1;
+    background: conic-gradient(from var(--ang), transparent 0deg 200deg, var(--ring-b) 270deg, var(--ring-a) 330deg, transparent 360deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    opacity: 0; transition: opacity .35s ease; animation: ring-turn 1.8s linear infinite; animation-play-state: paused; }
+  .ringbtn.btn--primary .ringbtn__ring { inset: 2px; padding: 2px; }
+  .ringbtn:is(:hover, :focus-visible) .ringbtn__ring { opacity: 1; animation-play-state: running; }
+  @keyframes ring-turn { to { --ang: 360deg; } }
+  @media (prefers-reduced-motion: reduce) { .ringbtn__ring { animation: none; --ang: 300deg; } }
+
+  /* the planet: the portrait faces you; the facts ride a tilted orbit that crosses behind it */
+  .orbit { position: relative; height: min(600px, calc(100svh - 220px)); display: grid; place-items: center; --r: 240px; --tilt: 72deg; --turn: -24deg; }
+  .hero--split { overflow-x: clip; }
+  .orbit > * { grid-area: 1 / 1; }
+  .orbit__glow { width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in oklab, var(--accent) 32%, transparent), color-mix(in oklab, var(--accent) 10%, transparent) 62%, transparent); filter: blur(8px); }
+  .orbit__scene { position: relative; width: 300px; height: 300px; transform-style: preserve-3d; perspective: 1400px; }
+  .orbit__photo { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: var(--surface); transform: translateZ(0);
+    box-shadow: 0 0 0 10px color-mix(in oklab, var(--accent) 14%, transparent), 0 30px 60px -20px color-mix(in oklab, var(--accent) 45%, transparent); }
+  .orbit__plane { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; transform: rotateZ(var(--turn)) rotateX(var(--tilt)); }
+  .orbit__path { position: absolute; left: calc(-1 * var(--r)); top: calc(-1 * var(--r)); width: calc(2 * var(--r)); height: calc(2 * var(--r)); border-radius: 50%;
+    border: 2px solid color-mix(in oklab, var(--accent) 45%, transparent); box-shadow: 0 0 14px color-mix(in oklab, var(--accent) 22%, transparent); }
+  .orbit__spin { position: absolute; transform-style: preserve-3d; animation: spin 32s linear infinite; }
+  .sat { position: absolute; left: 0; top: 0; transform-origin: 0 0 0; transform-style: preserve-3d; transform: rotateZ(var(--a)) translateX(var(--r)); }
+  /* undo the orbit's turn so each fact faces you, upright, as it travels */
+  .sat__face { position: absolute; left: 0; top: 0; transform-origin: 0 0 0; transform-style: preserve-3d; animation: face 32s linear infinite; }
+  /* the satellite: its dot sits exactly on the path, the label rides beside it */
+  .sat__in { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; transform: translate(-13px, -50%); padding: 5px 11px 5px 7px; border-radius: 99px; font-size: 12.5px; font-weight: 500; color: var(--muted);
+    background: var(--bg); border: 1px solid var(--line-strong); box-shadow: var(--glass-shadow); }
+  .sat__dot { width: 12px; height: 12px; border-radius: 50%; flex: none; background: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent), 0 0 12px color-mix(in oklab, var(--accent) 70%, transparent); margin-right: 2px; }
+  .sat:nth-child(even) .sat__dot { background: var(--amber); box-shadow: 0 0 0 3px color-mix(in oklab, var(--amber) 25%, transparent), 0 0 12px color-mix(in oklab, var(--amber) 70%, transparent); }
+  .sat__in b { font: 600 14px/1 var(--font-display); color: var(--accent); letter-spacing: -0.02em; }
+  .sat:nth-child(even) .sat__in b { color: var(--amber-text); }
+  html[data-theme="dark"] .sat:nth-child(even) .sat__in b { color: var(--amber); }
+  @keyframes spin { to { transform: rotateZ(360deg); } }
+  @keyframes face {
+    from { transform: rotateZ(calc(-1 * var(--a))) rotateZ(0deg) rotateX(calc(-1 * var(--tilt))) rotateZ(calc(-1 * var(--turn))); }
+    to   { transform: rotateZ(calc(-1 * var(--a))) rotateZ(-360deg) rotateX(calc(-1 * var(--tilt))) rotateZ(calc(-1 * var(--turn))); }
+  }
+  .orbit.is-paused :is(.orbit__spin, .sat__face) { animation-play-state: paused; }
+  .orbit__pause { position: absolute; right: 12px; bottom: 12px; grid-area: auto; }
+  @media (prefers-reduced-motion: reduce) { .orbit__spin, .sat__face { animation-play-state: paused; } .orbit__pause { display: none; } }
+  @media (max-width: 1023px) { .orbit { height: 440px; --r: 180px; margin-top: var(--s-6); } .orbit__glow { width: 340px; height: 340px; } .orbit__path { display: none; } .orbit__scene { width: 230px; height: 230px; } }
+  @media (max-width: 1023px) { .hero--split .orbit { align-self: stretch; } }
+  @media (max-width: 639px) { .orbit { height: 250px; --r: 98px; margin-top: var(--s-5); } .orbit__scene { width: 140px; height: 140px; } .orbit__glow { width: 340px; height: 340px; } .orbit__path { display: none; } .sat__in { font-size: 10.5px; padding: 4px 8px 4px 6px; gap: 4px; } .sat__in b { font-size: 12px; } .sat__dot { width: 9px; height: 9px; } .hero__typed { margin-top: var(--s-2); } }
+
+  /* about: the terminal beside the statement */
+  #hakkimda .mo-wh__text { font-size: clamp(26px, 1.4vw + 18px, 38px); line-height: 1.3; }
+  .about__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5); margin: var(--s-7) 0 0; }
+  .about__facts dt { color: var(--muted); font-size: var(--t-label); font-weight: 500; }
+  .about__facts dd { margin: var(--s-1) 0 0; }
+  .about__skills { margin: var(--s-6) 0 0; }
+  .about__term { min-height: 380px; background: var(--ground-bg); border-radius: var(--r-lg); }
+  @media (max-width: 639px) { .about__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .about__term { min-height: 300px; } }
+
+  /* experience: the company first, the date as a chip, a rail under three panels */
+  #deneyim .panel { --p-h: 220px; height: var(--p-h); overflow: hidden; }
+  @media (max-width: 639px) { #deneyim .panel { --p-h: 170px; } }
+  .rail { list-style: none; margin: 0; padding: 0; }
+  .rail > li { display: grid; align-content: start; gap: var(--s-2); }
+  .rail .panel { border-radius: var(--r-lg); }
+  .rail__dot { position: relative; height: 10px; margin: var(--s-4) 0 var(--s-2); }
+  .rail__dot::before { content: ""; position: absolute; left: 0; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .rail__dot::after { content: ""; position: absolute; left: 18px; right: calc(-1 * var(--s-5)); top: 4.5px; height: 1px; background: color-mix(in oklab, var(--ink) 18%, transparent); }
+  .rail > li:last-child .rail__dot::after { right: 0; }
+  .rail__date { justify-self: start; font: 600 15px/1.3 var(--font-mono); letter-spacing: .02em; color: var(--amber-text); }
+  .rail__co { font: var(--display-weight) var(--t-h3)/1.15 var(--font-display); letter-spacing: -0.02em; margin: var(--s-2) 0 0; }
+  .rail__role { color: var(--accent); font-weight: 500; }
+  .rail p { margin: 0; }
+  .rail__tags { color: var(--muted); font-size: var(--t-small); }
+
+  /* skills: the mind map */
+  .skills-map { height: 520px; }
+  .skills-map .dg { height: 100%; }
+  @media (max-width: 639px) { .skills-map { height: calc(2 * 100lvh - 340px); } }
+
+  /* projects: the list, and one window showing the project under the pointer */
+  .pc__tags { font: 500 12.5px/1.3 var(--font-mono); color: var(--accent); }
+  .v4 .rows li { cursor: pointer; }
+  .v4 .rows__name small { display: block; font: 500 12.5px/1.4 var(--font-mono); color: var(--accent); margin-top: 4px; }
+  .v4 .rows__n { font: 600 13px/1 var(--font-mono); color: var(--amber-text); margin-right: var(--s-4); }
+  html[data-theme="dark"] .v4 .rows__n { color: var(--amber); }
+  .v4__frame { --ratio: 0px; min-height: 440px; background: var(--ground-bg); --action: var(--ground-ink); }
+  .v4__frame .loop-pause:focus-visible { outline-color: var(--ground-ink); }
+  @media (max-width: 639px) { .v4__frame { min-height: 720px; margin-top: var(--s-6); } }
+  .v4__frame { position: relative; overflow: hidden; }
+  .v4__frame > [data-peek-for] { position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: auto; height: auto; }
+
+  /* designs: one screen */
+  .wall { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: 250px; gap: 2px; border-radius: var(--r-lg); overflow: hidden; }
+  .wall__item { display: block; overflow: hidden; background: var(--surface); }
+  .wall__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .wall__item:nth-child(1) { grid-column: span 3; } .wall__item:nth-child(2) { grid-column: span 5; } .wall__item:nth-child(3) { grid-column: span 4; }
+  .wall__item:nth-child(4) { grid-column: span 5; } .wall__item:nth-child(5) { grid-column: span 3; } .wall__item:nth-child(6) { grid-column: span 4; }
+  @media (max-width: 639px) { .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; } .wall__item:nth-child(n) { grid-column: span 1; } }
+
+  /* contact: the dark band, the ways set large */
+  .ways { list-style: none; margin: var(--s-7) 0 0; padding: 0; }
+  .ways li { border-top: 1px solid var(--line); }
+  .ways li:last-child { border-bottom: 1px solid var(--line); }
+  .ways a { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: center; gap: var(--s-4); padding: var(--s-5) 0; color: var(--ink); }
+  .ways__v { font: var(--display-weight) clamp(22px, 1.4vw + 12px, 32px)/1.2 var(--font-display); letter-spacing: -0.02em; overflow-wrap: anywhere; }
+  .ways__k { display: block; font: 500 var(--t-label)/1.4 var(--font-text); color: var(--muted); letter-spacing: 0; }
+  .ways .m-arrow { width: 20px; height: 20px; }
+  .contact__form { background: var(--surface); border-radius: var(--r-lg); padding: var(--s-7); }
+  @media (max-width: 639px) { .contact__form { padding: var(--s-6) var(--s-5); } .contact__form textarea { min-height: 400px; } .ways a { padding: var(--s-6) 0; } }
+</style>
 </head>
 <body>
-    <!-- Navbar (buzlu cam) -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
+<!-- type: software (a software engineer's own site: his code, projects and tools are the subject)
+     deal: hero split (h1 holds the client's full name, 42 characters: centred, triptych and product stop at 36 to 40),
+           nav nav-centre as the client's floating glass bar, close close-type, footer footer-statement, rhythm surface-pairs,
+           buttons pill (the client's rounded ask), mark initial; palette: the client's own (grafit, turkuaz, kehribar)
+           through start.mjs brand, with a night grade the visitor can switch; type host; lit ground sky
+     moments: word-highlight in #hakkimda (the about text lights up as it is read),
+              iris-opens in #yetenek (the page turns to the skills band through a circle) -->
 
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Ana Sayfa</a></li>
-                <li><a href="#about" class="nav-link">Hakkımda</a></li>
-                <li><a href="#experience" class="nav-link">Deneyimlerim</a></li>
-                <li><a href="#skills" class="nav-link">Yeteneklerim</a></li>
-                <li><a href="#projects" class="nav-link">Projelerim</a></li>
-                <li><a href="#designs" class="nav-link">Tasarımlarım</a></li>
-                <li><a href="#contact" class="nav-link">İletişim</a></li>
-            </ul>
-
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir">
-                    <i class="fa-solid fa-moon icon-dark"></i>
-                    <i class="fa-solid fa-sun icon-light"></i>
-                </button>
-                <button class="menu-toggle" id="menuToggle" aria-label="Menü">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">İçeriğe geç</a>
+    <a class="nav__logo" href="#top"><span class="mark mark--initial" aria-hidden="true">K</span><span class="nav__name">Korhan Ergün TUNÇELLİ</span></a>
+    <nav class="nav__links" aria-label="Ana menü">
+      <span class="nav__ind" aria-hidden="true"></span>
+      <div class="nav__item"><a class="nav__link" href="#anasayfa">Ana sayfa</a></div>
+      <div class="nav__item"><a class="nav__link" href="#hakkimda">Hakkımda</a></div>
+      <div class="nav__item"><a class="nav__link" href="#deneyim">Deneyim</a></div>
+      <div class="nav__item"><a class="nav__link" href="#yetenek">Yetenekler</a></div>
+      <div class="nav__item"><a class="nav__link" href="#projeler">Projeler</a></div>
+      <div class="nav__item"><a class="nav__link" href="#tasarim">Tasarımlar</a></div>
+      <div class="nav__item"><a class="nav__link" href="#iletisim">İletişim</a></div>
     </nav>
-
-    <!-- Hero / Ana Sayfa -->
-    <section id="home" class="hero">
-        <!-- Saydam arka plan görseli — yalnızca bu bölümde görünür -->
-        <div class="bg-overlay" id="bgOverlay"></div>
-
-        <div class="hero-content">
-            <p class="hero-greeting">Merhaba, ben</p>
-            <h1 class="hero-name">Korhan Ergün TUNÇELLİ</h1>
-            <h2 class="hero-title">
-                <span class="typed-text" id="typedText"></span><span class="cursor">|</span>
-            </h2>
-
-            <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary">
-                    <i class="fa-solid fa-code"></i>
-                    Projelerimi Gör
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <i class="fa-solid fa-envelope"></i>
-                    İletişime Geç
-                </a>
-            </div>
-
-            <div class="hero-socials">
-                <a href="https://github.com/korhnergun" aria-label="GitHub" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/korhnergun/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/korhnergun" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-        </div>
-
-        <a href="#about" class="scroll-down" aria-label="Aşağı kaydır">
-            <span class="mouse"><span class="wheel"></span></span>
-            <span class="scroll-text">Kaydır</span>
-        </a>
-    </section>
-
-    <!-- Hakkımda -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">01.</span>
-                <h2 class="section-title">Hakkımda</h2>
-                <span class="section-line"></span>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-image">
-                    <div class="about-image-frame">
-                        <img src="assets/images/profilresmi2.jpeg" alt="Profil fotoğrafı" id="profileImg" />
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p>
-                        Tekirdağ Namık Kemal Üniversitesi'nden 3.31 GPA ile mezun oldum.
-                        Yazılım geliştirme ve tasarım alanlarında kendimi sürekli geliştirmeye
-                        devam ediyorum. Projelerim ve deneyimlerim hakkında daha fazla bilgi edinmek için aşağı kaydırabilirsiniz.
-                    </p>
-                    <p>
-                        Güncel olarak Web Yazılım Geliştirme, Backend Yazılım Geliştirme, Veritabanı alanlarıyla ilgileniyorum. Teknolojilere olan tutkum, problem çözme becerilerim ve yaratıcı yaklaşımım sayesinde
-                        her zaman yeni zorluklara hazırım. Takım çalışmasına inanıyorum ve birlikte harika şeyler başarabileceğimize inanıyorum.
-                    </p>
-
-                    <div class="about-info">
-                        <div class="info-item">
-                            <span class="info-label">Ad</span>
-                            <span class="info-value">Korhan Ergün TUNÇELLİ</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">E-posta</span>
-                            <span class="info-value">korhanergunt2@gmail.com</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Konum</span>
-                            <span class="info-value">İzmir, Türkiye</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Durum</span>
-                            <span class="info-value status-available">
-                                <span class="status-dot"></span>Müsait
-                            </span>
-                        </div>
-                    </div>
-
-                    <a href="Korhan%20Erg%C3%BCn%20TUN%C3%87ELL%C4%B0%20CV.pdf" class="btn btn-primary" download>
-                        <i class="fa-solid fa-download"></i>
-                        CV İndir
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Deneyimlerim -->
-    <section id="experience" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">02.</span>
-                <h2 class="section-title">Deneyimlerim</h2>
-                <span class="section-line"></span>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Temmuz 2024 - Ağustos 2024</span>
-                        <h3 class="timeline-title">Yazılım Geliştirme Yaz Stajı</h3>
-                        <h4 class="timeline-company">CEIBA Tele ICU</h4>
-                        <p>
-                            HTML, CSS, JavaScript ve React.js kullanarak frontend geliştirme üzerinde çalıştım.
-                            Sitede birçok sayfa (doktor notları, hemşire notları, hasta verileri vb.) bulunuyor ve bu sayfalarda
-                            veri girişleri ve not bölümleri içeren tablolar yer alıyor.
-                            Ayrıca Yarn, Azure DevOPS, Sublime Merge, Git vb. kullanarak ekip içinde çalışma deneyimi kazandım.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">HTML, CSS, JavaScript, React.js</span>
-                            <span class="tag">Yarn, Azure, DevOPS</span>
-                            <span class="tag">Git, Github</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Şubat 2024 - Haziran 2024</span>
-                        <h3 class="timeline-title">Uzun Dönem Staj</h3>
-                        <h4 class="timeline-company">Turkcell Global Bilgi</h4>
-                        <p>
-                            Müşteri faturalama süreçlerini optimize etmek ve ilgili şikayetleri ele almak için Python ve SQL tabanlı çözümler oluşturdum.
-                            Makine öğrenimi algoritmaları kullanılarak veri analizi ve tahmin projeleri yürüttüm.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">MSSQL</span>
-                            <span class="tag">Yapay Zeka</span>
-                            <span class="tag">Agile</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Ağustos 2022 - Eylül 2022</span>
-                        <h3 class="timeline-title">IT Yaz Stajı</h3>
-                        <h4 class="timeline-company">BorgWarner</h4>
-                        <p>
-                            Çalışma, ağ protokolleri, sistem kurulumları ve Raspberry Pi uygulamaları da dahil olmak üzere donanım-yazılım entegrasyonunu içeriyordu.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">Raspberry Pi</span>
-                            <span class="tag">HTTPS, Ağ Protokolleri</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Django</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Yeteneklerim -->
-    <section id="skills" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">03.</span>
-                <h2 class="section-title">Yeteneklerim</h2>
-                <span class="section-line"></span>
-            </div>
-
-            <div class="skills-grid" id="skillsGrid">
-                <!-- JS ile doldurulacak -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Projelerim (GitHub) -->
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">04.</span>
-                <h2 class="section-title">Projelerim</h2>
-                <span class="section-line"></span>
-            </div>
-
-            <div class="projects-header">
-                <p class="projects-intro">
-                    GitHub hesabımdaki en güncel projeler.
-                </p>
-                <a href="#" id="githubProfileLink" class="btn btn-ghost" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-github"></i>
-                    GitHub Profilim
-                </a>
-            </div>
-
-            <div class="projects-grid" id="projectsGrid">
-                <!-- JS ile GitHub API'sinden doldurulacak -->
-                <div class="loader" id="projectsLoader">
-                    <div class="spinner"></div>
-                    <p>Projeler yükleniyor...</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tasarımlarım (kart yapısı) -->
-    <section id="designs" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">05.</span>
-                <h2 class="section-title">Tasarımlarım</h2>
-                <span class="section-line"></span>
-            </div>
-
-            <p class="designs-intro">
-                Kişisel olarak yaptığım çizim ve tasarımlardan seçkiler.
-            </p>
-
-            <div class="designs-grid" id="designsGrid">
-                <!-- JS ile doldurulacak -->
-            </div>
-        </div>
-    </section>
-
-    <!-- İletişim -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">06.</span>
-                <h2 class="section-title">İletişim</h2>
-                <span class="section-line"></span>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Bana ulaşmak için..</h3>
-                    <p>
-                        Yeni projeler, iş birlikleri veya sadece merhaba demek için
-                        çekinmeden ulaşabilirsiniz.
-                    </p>
-
-                    <div class="contact-methods">
-                        <a href="https://www.linkedin.com/in/korhnergun/" class="contact-method" target="_blank" rel="noopener">
-                            <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-                            <div class="contact-text">
-                                <span class="contact-label">LinkedIn</span>
-                                <span class="contact-value">linkedin.com/in/korhnergun</span>
-                            </div>
-                        </a>
-                        <a href="https://github.com/korhnergun" class="contact-method" target="_blank" rel="noopener">
-                            <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
-                            <div class="contact-text">
-                                <span class="contact-label">GitHub</span>
-                                <span class="contact-value">github.com/korhnergun</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <form class="contact-form" id="contactForm" action="https://formsubmit.co/korhanergunt2@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="Kişisel Site — Yeni İletişim Mesajı" />
-                    <input type="hidden" name="_template" value="table" />
-                    <input type="hidden" name="_captcha" value="false" />
-                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-
-                    <div class="form-group">
-                        <label for="name">Adınız</label>
-                        <input type="text" id="name" name="name" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-postanız</label>
-                        <input type="email" id="email" name="email" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mesajınız</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="contactSubmit">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span class="btn-label">Gönder</span>
-                    </button>
-                    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; <span id="year"></span> korhanerguntuncelli.com — Tüm hakları saklıdır.</p>
-            <p class="footer-small">developed by Korhan Ergün TUNÇELLİ</p>
-        </div>
-    </footer>
-
-    <!-- Yukarı Dön Butonu -->
-    <button id="scrollToTopBtn" aria-label="En üste dön">
-        <i class="fa-solid fa-arrow-up"></i>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="Korhan%20Erg%C3%BCn%20TUN%C3%87ELL%C4%B0%20CV.pdf" download>CV'mi indirin</a>
+      <button class="nav__theme" type="button" aria-label="Koyu temaya geç" data-theme-toggle>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
     </button>
-    <script src="js/script.js"></script>
+    </div>
+    <button class="nav__theme nav__theme--phone" type="button" aria-label="Koyu temaya geç" data-theme-toggle>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+    </button>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menü"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--split" id="anasayfa" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-6">
+        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>Yeni işlere müsait · İzmir</p>
+        <h1 id="hero-h"><span class="hero__hi">Merhaba, ben</span> Korhan Ergün TUNÇELLİ<span class="sr-only">, bilgisayar mühendisi</span></h1>
+        <!-- the titles of the old site, typed and erased in turn; two rounds, then it rests on the first -->
+        <p class="hero__typed" aria-hidden="true"><span class="typed" data-typed='["Bilgisayar Mühendisi","Computer Engineer","Tasarımcı"]' aria-hidden="true">Bilgisayar Mühendisi</span><span class="caret" aria-hidden="true"></span></p>
+        <p class="hero__lead">C#, ASP.NET MVC ve React ile web uygulamaları geliştiriyorum. Tekirdağ Namık Kemal Üniversitesi'nden 3.31 ortalamayla mezun oldum.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary ringbtn" href="Korhan%20Erg%C3%BCn%20TUN%C3%87ELL%C4%B0%20CV.pdf" download><span class="ringbtn__ring" aria-hidden="true"></span>CV'mi indirin<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary ringbtn" href="#projeler"><span class="ringbtn__ring" aria-hidden="true"></span>Projelerimi görün</a>
+        </div>
+      </div>
+      <div class="orbit span-6 start-7" data-enter-media>
+        <div class="orbit__glow" aria-hidden="true"></div>
+        <div class="orbit__scene">
+          <!-- the portrait: assets/images/profil.jpg, a square crop of the client's photograph -->
+          <img class="orbit__photo" src="assets/images/profil.jpg" alt="Korhan Ergün TUNÇELLİ'nin portresi" width="800" height="800" fetchpriority="high" data-source="client" data-subject="portrait">
+          <div class="orbit__plane" aria-hidden="true">
+            <div class="orbit__path"></div>
+            <div class="orbit__spin">
+              <span class="sat" style="--a: 0deg"><span class="sat__face"><span class="sat__in"><i class="sat__dot"></i><b>3.31</b> ortalama</span></span></span>
+              <span class="sat" style="--a: 90deg"><span class="sat__face"><span class="sat__in"><i class="sat__dot"></i><b>3</b> staj</span></span></span>
+              <span class="sat" style="--a: 180deg"><span class="sat__face"><span class="sat__in"><i class="sat__dot"></i><b>15</b> teknoloji</span></span></span>
+              <span class="sat" style="--a: 270deg"><span class="sat__face"><span class="sat__in"><i class="sat__dot"></i><b>4</b> proje</span></span></span>
+            </div>
+          </div>
+        </div>
+        <dl class="sr-only"><dt>Ortalama</dt><dd>3.31</dd><dt>Staj</dt><dd>3 şirket</dd><dt>Teknoloji</dt><dd>15</dd><dt>Proje</dt><dd>4</dd></dl>
+        <button class="loop-pause orbit__pause" type="button" aria-label="Yörüngeyi durdur" aria-pressed="false"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2h3v10H3zM8 2h3v10H8z"/></svg></button>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="hakkimda" data-moment="word-highlight" aria-labelledby="hakkimda-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head"><h2 id="hakkimda-h">Hakkımda</h2></div>
+        <p class="mo-wh__text">Tekirdağ Namık Kemal Üniversitesi'nden 3.31 ortalamayla mezun oldum. Bugün <strong>web ve backend</strong> yazılım geliştirme ile veritabanı alanlarında çalışıyor, takım içinde problem çözmeyi seviyorum.</p>
+        <dl class="about__facts">
+          <div><dt>Ad</dt><dd>Korhan Ergün TUNÇELLİ</dd></div>
+          <div><dt>Konum</dt><dd>İzmir, Türkiye</dd></div>
+          <div><dt>Diller</dt><dd>İngilizce B2, Almanca A1</dd></div>
+          <div><dt>Durum</dt><dd>Müsait</dd></div>
+        </dl>
+        <p class="about__skills">Agile · Takım çalışması · Liderlik · Teknik dokümantasyon · Problem çözme</p>
+      </div>
+      <div class="span-6 start-7 frame about__term" role="img" aria-label="Terminalde whoami komutu çalışıyor ve unvanlar satır satır yazılıyor">
+        <div class="stage"><div class="at-rise fit" style="--fit-max:460px;--ax:max(24px, 50% - 230px);--ay:48px;--ay-sm:24px" data-ui-loop aria-hidden="true">
+          <div class="ui ui-panel ui-term" data-ui="terminal-run">
+            <div class="ui-term__head"><span class="ui-dots"><i></i><i></i><i></i></span><span class="ui-term__title">korhan/cv</span><span class="ui-meta">zsh</span><span class="ui-spacer"></span></div>
+            <div class="ui-term__screen" data-term-screen>
+              <div class="ui-term__track" data-term-track>
+                <div class="ui-term__ln ui-term__cmd"><span class="ui-term__cwd">~/<span class="ui-term__up">korhan/</span>cv</span><span class="ui-term__sig">$</span><span class="ui-term__typed" data-term-cmd>whoami --detay</span></div>
+                <div class="ui-term__ln ui-term__meter" data-term-out data-term-meter><span class="ui-term__bar" style="--p:1"><i></i></span><span class="ui-term__count" data-term-count>4 / 4 alan</span></div>
+                <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">Bilgisayar mühendisi</span><span class="ui-term__n">unvan</span></div>
+                <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">C#, ASP.NET MVC5, SQL</span><span class="ui-term__n">backend</span></div>
+                <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">React, JavaScript</span><span class="ui-term__n">arayüz</span></div>
+                <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">Procreate, Figma</span><span class="ui-term__n">tasarım</span></div>
+                <div class="ui-term__ln ui-term__done" data-term-out data-term-done><span class="ui-term__ok"><svg viewBox="0 0 16 16"><path d="m4.5 8.3 2.4 2.4 4.6-5"/></svg></span><b>Müsait</b><span class="ui-term__dim">İzmir</span></div>
+                <div class="ui-term__ln ui-term__cmd" data-term-next><span class="ui-term__cwd">~/<span class="ui-term__up">korhan/</span>cv</span><span class="ui-term__sig">$</span><span class="ui-term__typed"></span><i class="ui-term__caret"></i></div>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="deneyim" style="--hm: 2" aria-labelledby="deneyim-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="deneyim-h">Staj deneyimim. <span class="muted">Sağlık, telekom ve otomotiv şirketlerinde üç staj.</span></h2></div>
+      <ol class="grid rail">
+        <li class="span-4">
+          <div class="panel">
+            <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:340px;--ax:max(24px, 50% - 170px);--ay:24px;--ay-sm:16px" data-ui-loop>
+              <div class="ui ui-files" data-ui="files" data-reading="{n} / {total} sayfa">
+                <div class="ui-files__status"><span class="ui-dot"></span><span data-files-status>4 sayfa hazır</span></div>
+                <ul class="ui-files__grid">
+                  <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="react" src="assets/icons/react.svg" alt=""></span><span class="ui-file__name">Doktor notları</span><span class="ui-file__kind">React</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                  <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="react" src="assets/icons/react.svg" alt=""></span><span class="ui-file__name">Hemşire notları</span><span class="ui-file__kind">React</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                  <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="react" src="assets/icons/react.svg" alt=""></span><span class="ui-file__name">Hasta verileri</span><span class="ui-file__kind">React</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                  <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:js" src="assets/icons/js.svg" alt=""></span><span class="ui-file__name">Veri tabloları</span><span class="ui-file__kind">JavaScript</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                </ul>
+              </div>
+            </div></div>
+          </div>
+          <div class="rail__dot" aria-hidden="true"></div>
+          <span class="rail__date">TEMMUZ – AĞUSTOS 2024</span>
+          <h3 class="rail__co">CEIBA Tele ICU</h3>
+          <p class="rail__role">Yazılım geliştirme stajı</p>
+          <p>React.js ile doktor notları, hemşire notları ve hasta verileri sayfalarındaki tabloları ve not bölümlerini geliştirdim.</p>
+          <p class="rail__tags">React · Yarn · Azure DevOps · Git</p>
+        </li>
+        <li class="span-4">
+          <div class="panel">
+            <div class="dg" data-diagram data-dg-still><script type="application/json">{"layout":"hub","alt":"Python ve SQL; MSSQL verisi, fatura süreçleri, şikayet analizi ve tahmin modelleriyle bağlantılı.","center":{"label":"Python + SQL","icon":"python"},"spokes":[{"label":"MSSQL","icon":"ui:database"},{"label":"Fatura","icon":"ui:receipt"},{"label":"Şikayet","icon":"ui:message-square"},{"label":"Tahmin","icon":"ui:chart-line"}]}</script></div>
+          </div>
+          <div class="rail__dot" aria-hidden="true"></div>
+          <span class="rail__date">ŞUBAT – HAZİRAN 2024</span>
+          <h3 class="rail__co">Turkcell Global Bilgi</h3>
+          <p class="rail__role">Uzun dönem staj</p>
+          <p>Fatura süreçleri ve ilgili şikayetler için Python ve SQL çözümleri kurdum; makine öğrenmesiyle veri analizi yaptım.</p>
+          <p class="rail__tags">Python · MSSQL · Yapay zeka · Agile</p>
+        </li>
+        <li class="span-4">
+          <div class="panel">
+            <div class="dg" data-diagram data-dg-still><script type="application/json">{"layout":"hub","alt":"Raspberry Pi ağ protokollerine, sistem kurulumlarına, Python ve Django uygulamalarına bağlı.","center":{"label":"Raspberry Pi","icon":"logos:raspberry-pi"},"spokes":[{"label":"Ağ","icon":"ui:network"},{"label":"HTTPS","icon":"ui:lock"},{"label":"Python","icon":"python"},{"label":"Django","icon":"logos:django-icon"}]}</script></div>
+          </div>
+          <div class="rail__dot" aria-hidden="true"></div>
+          <span class="rail__date">AĞUSTOS – EKİM 2022</span>
+          <h3 class="rail__co">BorgWarner</h3>
+          <p class="rail__role">IT yaz stajı</p>
+          <p>Ağ protokolleri, sistem kurulumları ve Raspberry Pi uygulamalarıyla donanım ve yazılımı birlikte çalıştırdım.</p>
+          <p class="rail__tags">Raspberry Pi · HTTPS · Python · Django</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section ground-surface" id="yetenek" style="--hm: 2" data-moment="iris-opens" data-moment-opts='{"from": "base"}' aria-labelledby="yetenek-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="yetenek-h">Yeteneklerim. <span class="muted">Dört grupta 15 teknoloji.</span></h2></div>
+      <div class="frame skills-map">
+        <div class="dg" data-diagram><script type="application/json">{"layout":"hub","alt":"Yetenekler dört grupta: backend (C#, ASP.NET, SQL), arayüz (React, JavaScript, TypeScript, HTML ve CSS), diğer diller (Python, C ve C++, Node.js, Bootstrap) ve araçlar (Git, GitHub, Figma).","center":{"label":"Korhan","icon":"text:KE"},"spokes":[{"label":"Backend","icon":"ui:server","children":[{"label":"C#","icon":"c-sharp"},{"label":"ASP.NET","icon":"dotnet"},{"label":"SQL","icon":"sql"}]},{"label":"Arayüz","icon":"ui:layout-template","children":[{"label":"React","icon":"react"},{"label":"JavaScript","icon":"javascript"},{"label":"TypeScript","icon":"logos:typescript-icon"},{"label":"HTML ve CSS","icon":"logos:html-5"}]},{"label":"Diller","icon":"ui:code","children":[{"label":"Python","icon":"python"},{"label":"C ve C++","icon":"logos:c-plusplus"},{"label":"Node.js","icon":"logos:nodejs-icon"},{"label":"Bootstrap","icon":"logos:bootstrap"}]},{"label":"Araçlar","icon":"ui:wrench","children":[{"label":"Git","icon":"logos:git-icon"},{"label":"GitHub","icon":"logos:github-icon"},{"label":"Figma","icon":"figma"}]}]}</script></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ground-surface" id="projeler" style="--hm: 2" aria-labelledby="projeler-h"><div class="wrap"><div class="section-head section-head--row"><div><h2 id="projeler-h">Projelerim. <span class="muted">GitHub depoları ve TÜBİTAK destekli bir model.</span></h2></div><a class="link" href="https://github.com/korhnergun" target="_blank" rel="noopener">GitHub profilimi görün</a></div><div class="grid grid--top v4" data-peek><ul class="rows span-5"><li data-peek-to="ai" tabindex="0"><span class="rows__n">01</span><span class="rows__name">Maç sonucu tahmin eden model<small>Python · scikit-learn · TÜBİTAK</small></span><a class="rows__value link" href="https://github.com/korhnergun" target="_blank" rel="noopener" aria-label="AI Match Predictor GitHub'da">GitHub</a></li><li data-peek-to="web" tabindex="0"><span class="rows__n">02</span><span class="rows__name">Kişisel web sitesi, ASP.NET ile<small>C# · ASP.NET · EF · Bootstrap</small></span><a class="rows__value link" href="https://github.com/korhnergun/PersonalWebSite" target="_blank" rel="noopener" aria-label="PersonalWebSite GitHub'da">GitHub</a></li><li data-peek-to="cs" tabindex="0"><span class="rows__n">03</span><span class="rows__name">C# eğitim kampı çalışmaları<small>C# · .NET Framework</small></span><a class="rows__value link" href="https://github.com/korhnergun/CSharpEgitimKampi" target="_blank" rel="noopener" aria-label="CSharpEgitimKampi GitHub'da">GitHub</a></li><li data-peek-to="ibb" tabindex="0"><span class="rows__n">04</span><span class="rows__name">İBB Ecodation frontend çalışması<small>HTML · CSS · JavaScript</small></span><a class="rows__value link" href="https://github.com/korhnergun/ibb_ecodation_frontend" target="_blank" rel="noopener" aria-label="ibb_ecodation_frontend GitHub'da">GitHub</a></li></ul><div class="frame frame--split span-6 start-7 v4__frame" role="img" aria-label="Seçili projenin çalışan görünümü"><div class="stage stage--fade-br" aria-hidden="true" data-peek-for="ai"><div class="at-rise fit" style="--fit-max:440px;--ax:max(20px, 50% - 220px);--ay:48px;--ay-sm:16px" data-ui-loop><div class="ui ui-panel ui-term" data-ui="terminal-run">
+              <div class="ui-term__head"><span class="ui-dots"><i></i><i></i><i></i></span><span class="ui-term__title">ai-match-predictor</span><span class="ui-meta">zsh</span><span class="ui-spacer"></span></div>
+              <div class="ui-term__screen" data-term-screen>
+                <div class="ui-term__track" data-term-track>
+                  <div class="ui-term__ln ui-term__cmd"><span class="ui-term__cwd">~/<span class="ui-term__up">korhan/</span>ai-match</span><span class="ui-term__sig">$</span><span class="ui-term__typed" data-term-cmd>python tahmin.py</span></div>
+                  <div class="ui-term__ln ui-term__meter" data-term-out data-term-meter><span class="ui-term__bar" style="--p:1"><i></i></span><span class="ui-term__count" data-term-count>4 / 4 adım</span></div>
+                  <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">maç verisi okundu</span></div>
+                  <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">özellikler hazırlandı</span></div>
+                  <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">RandomForestClassifier</span><span class="ui-term__n">eğitildi</span></div>
+                  <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">tahminler kaydedildi</span></div>
+                  <div class="ui-term__ln ui-term__done" data-term-out data-term-done><span class="ui-term__ok"><svg viewBox="0 0 16 16"><path d="m4.5 8.3 2.4 2.4 4.6-5"/></svg></span><b>Bitti</b></div>
+                  <div class="ui-term__ln ui-term__cmd" data-term-next><span class="ui-term__cwd">~/<span class="ui-term__up">korhan/</span>ai-match</span><span class="ui-term__sig">$</span><span class="ui-term__typed"></span><i class="ui-term__caret"></i></div>
+                </div>
+              </div>
+            </div></div></div><div class="stage stage--fade-br" aria-hidden="true" data-peek-for="web" hidden><div class="at-rise fit" style="--fit-max:340px;--ax:max(20px, 50% - 170px);--ay:48px;--ay-sm:16px"><div class="ui ui-panel ui-checks" data-ui="checklist">
+              <div class="ui-checks__head"><div class="ui-title">PersonalWebSite</div><span class="ui-spacer"></span><div class="ui-meta" data-checks-count>5 / 5</div></div>
+              <div class="ui-checks__bar"><i data-checks-bar style="--k:1"></i></div>
+              <ul class="ui-checks__list">
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Repository deseni</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Entity Framework ve LINQ</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Yönetim paneli</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Giriş formu</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Bootstrap ile duyarlı arayüz</span></li>
+              </ul>
+            </div></div></div><div class="stage stage--fade-br" aria-hidden="true" data-peek-for="cs" hidden><div class="at-corner wide" style="--w:560px;--ax:20px;--ay:48px"><div class="ui ui-files" data-ui="files" data-reading="{n} / {total} dosya">
+              <div class="ui-files__status"><span class="ui-dot"></span><span data-files-status>6 öğe</span></div>
+              <ul class="ui-files__grid">
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:folder" src="assets/icons/folder.svg" alt=""></span><span class="ui-file__name">01_MainSubjects</span><span class="ui-file__kind">Klasör</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:csharp" src="assets/icons/csharp.svg" alt=""></span><span class="ui-file__name">Program.cs</span><span class="ui-file__kind">C#</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:config" src="assets/icons/config.svg" alt=""></span><span class="ui-file__name">App.config</span><span class="ui-file__kind">Ayar</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:csharp" src="assets/icons/csharp.svg" alt=""></span><span class="ui-file__name">AssemblyInfo.cs</span><span class="ui-file__kind">C#</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:folder" src="assets/icons/folder.svg" alt=""></span><span class="ui-file__name">02_Variables</span><span class="ui-file__kind">Klasör</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:csharp" src="assets/icons/csharp.svg" alt=""></span><span class="ui-file__name">CSharpEgitimKampi.sln</span><span class="ui-file__kind">Çözüm</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+              </ul>
+            </div></div></div><div class="stage stage--fade-br" aria-hidden="true" data-peek-for="ibb" hidden><div class="at-corner wide" style="--w:560px;--ax:20px;--ay:48px"><div class="ui ui-files" data-ui="files" data-reading="{n} / {total} dosya">
+              <div class="ui-files__status"><span class="ui-dot"></span><span data-files-status>6 öğe</span></div>
+              <ul class="ui-files__grid">
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:markdown" src="assets/icons/markdown.svg" alt=""></span><span class="ui-file__name">README.md</span><span class="ui-file__kind">Markdown</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:html" src="assets/icons/html.svg" alt=""></span><span class="ui-file__name">index.html</span><span class="ui-file__kind">HTML</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:css" src="assets/icons/file-css.svg" alt=""></span><span class="ui-file__name">style.css</span><span class="ui-file__kind">CSS</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:js" src="assets/icons/js.svg" alt=""></span><span class="ui-file__name">template.js</span><span class="ui-file__kind">JavaScript</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:folder" src="assets/icons/folder.svg" alt=""></span><span class="ui-file__name">img</span><span class="ui-file__kind">Klasör</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+                <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:folder" src="assets/icons/folder.svg" alt=""></span><span class="ui-file__name">util</span><span class="ui-file__kind">Klasör</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+              </ul>
+            </div></div></div></div></div></div></section>
+
+  <section class="section" id="tasarim" aria-labelledby="tasarim-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="tasarim-h">Tasarımlarım. <span class="muted">Procreate portreleri ve Twitch yayın paketleri.</span></h2></div>
+      <div class="wall">
+        <a class="wall__item m-zoom" href="assets/images/tasarimlar/1.jpg" target="_blank" rel="noopener" aria-label="Milflix portre çizimi"><img src="assets/images/tasarimlar/1.jpg" alt="Milflix için çizilmiş dijital portre" loading="lazy" width="1400" height="1400" style="object-position: 50% 25%" data-source="client" data-subject="portrait illustration"></a>
+        <a class="wall__item m-zoom" href="assets/images/tasarimlar/3.jpg" target="_blank" rel="noopener" aria-label="Cenk Öner Twitch paketi"><img src="assets/images/tasarimlar/3.jpg" alt="Cenk Öner için hazırlanmış Twitch yayın paketi" loading="lazy" width="1400" height="788" data-source="client" data-subject="stream overlay"></a>
+        <a class="wall__item m-zoom" href="assets/images/tasarimlar/4.jpg" target="_blank" rel="noopener" aria-label="GTMMaster Twitch paketi"><img src="assets/images/tasarimlar/4.jpg" alt="GTMMaster için hazırlanmış Twitch yayın paketi" loading="lazy" width="1400" height="788" data-source="client" data-subject="stream overlay"></a>
+        <a class="wall__item m-zoom" href="assets/images/tasarimlar/5.jpg" target="_blank" rel="noopener" aria-label="Kouche Twitch paketi"><img src="assets/images/tasarimlar/5.jpg" alt="Kouche için hazırlanmış Twitch yayın paketi" loading="lazy" width="1400" height="788" data-source="client" data-subject="stream overlay"></a>
+        <a class="wall__item m-zoom" href="assets/images/tasarimlar/2.jpg" target="_blank" rel="noopener" aria-label="Yılmaz Şahin portre çizimi"><img src="assets/images/tasarimlar/2.jpg" alt="Yılmaz Şahin için çizilmiş dijital portre" loading="lazy" width="1400" height="1400" style="object-position: 50% 25%" data-source="client" data-subject="portrait illustration"></a>
+        <a class="wall__item m-zoom" href="assets/images/tasarimlar/6.jpg" target="_blank" rel="noopener" aria-label="Sunay Can Twitch paketi"><img src="assets/images/tasarimlar/6.jpg" style="object-position: 50% 0%" alt="Sunay Can için hazırlanmış Twitch yayın paketi" loading="lazy" width="1400" height="1400" data-source="client" data-subject="stream overlay"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ground-inverse contact" id="iletisim" style="--hm: 2" aria-labelledby="iletisim-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head"><h2 id="iletisim-h">İletişim. <span class="muted">Yeni projeler, iş birlikleri ya da sadece merhaba demek için.</span></h2></div>
+        <ul class="ways ic-dark">
+          <li><a href="mailto:korhanergunt2@gmail.com"><img class="ic ic-28" src="assets/icons/gmail.svg" alt=""><span class="ways__v"><span class="ways__k">E-posta</span>korhanergunt2@gmail.com</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/in/korhnergun/" target="_blank" rel="noopener"><img class="ic ic-28" src="assets/icons/linkedin-icon.svg" alt=""><span class="ways__v"><span class="ways__k">LinkedIn</span>in/korhnergun</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></li>
+          <li><a href="https://github.com/korhnergun" target="_blank" rel="noopener"><img class="ic ic-28 ic-ink" src="assets/icons/github-icon.svg" alt=""><span class="ways__v"><span class="ways__k">GitHub</span>korhnergun</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></li>
+          <li><a href="https://www.instagram.com/korhnergun" target="_blank" rel="noopener"><img class="ic ic-28 ic-ink" src="assets/icons/instagram-icon.svg" alt=""><span class="ways__v"><span class="ways__k">Instagram</span>@korhnergun</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="span-6 start-7 contact__form">
+        <form class="form" action="https://formsubmit.co/korhanergunt2@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/korhanergunt2@gmail.com" data-sent="Mesajınız gönderildi. E-postanıza dönüş yapacağım." novalidate>
+          <input type="hidden" name="_subject" value="Kişisel site: yeni iletişim mesajı">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="field field--full"><label for="f-name">Adınız</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <p class="field__error" id="f-name-err" hidden>Adınızı yazın.</p></div>
+          <div class="field field--full"><label for="f-email">E-postanız</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
+            <p class="field__error" id="f-email-err" hidden>@ içeren bir e-posta adresi yazın, ör. ad@alanadi.com.</p></div>
+          <div class="field field--full"><label for="f-msg">Mesajınız</label>
+            <textarea id="f-msg" name="message" rows="7" required aria-describedby="f-msg-err"></textarea>
+            <p class="field__error" id="f-msg-err" hidden>Mesajınızı yazın.</p></div>
+          <div class="btn-row"><button class="btn btn--primary" type="submit">Mesaj gönderin</button></div>
+          <p class="form__status" role="status" data-form-status></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing footer--statement" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Özgeçmişimin tamamı tek PDF'te</h2>
+        <p class="t-small">Eğitim, stajlar, projeler ve referanslar.</p>
+      </div>
+      <a class="btn btn--primary btn--xl btn--wide" href="Korhan%20Erg%C3%BCn%20TUN%C3%87ELL%C4%B0%20CV.pdf" download>CV'mi indirin<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top">Korhan Ergün TUNÇELLİ</a>
+          <p class="footer__lede">Bilgisayar mühendisi, İzmir.</p>
+        </div>
+        <div class="span-2 start-7 footer__col"><h3>Ben</h3><ul><li><a href="#hakkimda">Hakkımda</a></li><li><a href="#deneyim">Deneyim</a></li><li><a href="#yetenek">Yetenekler</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>İşler</h3><ul><li><a href="#projeler">Projeler</a></li><li><a href="#tasarim">Tasarımlar</a></li><li><a href="#iletisim">İletişim</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Bağlantılar</h3><ul><li><a href="https://github.com/korhnergun" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/korhnergun/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/korhnergun" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Korhan Ergün TUNÇELLİ</span>
+        <span>Ürün adları ve logolar sahiplerinin ticari markalarıdır.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="tabbar" aria-label="Bölümler">
+  <span class="tabbar__ind" aria-hidden="true"></span>
+  <a class="tabbar__a" href="#anasayfa"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Giriş</span></a>
+  <a class="tabbar__a" href="#hakkimda"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Hakkımda</span></a>
+  <a class="tabbar__a" href="#deneyim"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg><span>Deneyim</span></a>
+  <a class="tabbar__a" href="#yetenek"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v2m0-20v2m5 16v2m0-20v2M2 12h2m-2 5h2M2 7h2m16 5h2m-2 5h2M20 7h2M7 20v2M7 2v2"/><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="8" height="8" x="8" y="8" rx="1"/></svg><span>Yetenek</span></a>
+  <a class="tabbar__a" href="#projeler"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 19a5 5 0 0 1-5-5v8"/><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5"/><circle cx="13" cy="12" r="2"/><circle cx="20" cy="19" r="2"/></svg><span>Proje</span></a>
+  <a class="tabbar__a" href="#tasarim"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20a10 9 0 0 1 10 9a5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg><span>Tasarım</span></a>
+  <a class="tabbar__a" href="#iletisim"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg><span>İletişim</span></a>
+</nav>
+<script>
+  /* the typed title: typed, held, erased, the next one; two rounds, then it rests on the first */
+  (function () {
+    var el = document.querySelector('[data-typed]'), box = el && el.parentNode;
+    if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var words = JSON.parse(el.dataset.typed), i = 0, rounds = 0;
+    function type(w, k) {
+      el.textContent = w.slice(0, k);
+      if (k < w.length) return setTimeout(type, 75, w, k + 1);
+      if (i === 0 && rounds >= 2) { box.classList.add('is-done'); return; }
+      setTimeout(erase, 1700, w, w.length);
+    }
+    function erase(w, k) {
+      el.textContent = w.slice(0, k);
+      if (k > 0) return setTimeout(erase, 38, w, k - 1);
+      i = (i + 1) % words.length; if (i === 0) rounds++;
+      setTimeout(type, 260, words[i], 1);
+    }
+    setTimeout(erase, 2200, words[0], words[0].length);
+  })();
+  /* the orbit's pause button (it moves on its own for longer than 5 seconds) */
+  (function () {
+    var o = document.querySelector('.orbit'), b = o && o.querySelector('.orbit__pause');
+    if (!b) return;
+    b.addEventListener('click', function () {
+      var p = o.classList.toggle('is-paused'); b.setAttribute('aria-pressed', String(p)); b.setAttribute('aria-label', p ? 'Yörüngeyi oynat' : 'Yörüngeyi durdur');
+      b.innerHTML = p ? '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2l8 5-8 5z"/></svg>' : '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2h3v10H3zM8 2h3v10H8z"/></svg>';
+    });
+  })();
+</script>
+<script>
+  /* a tap on a section word: the same instant jump, wrapped in a view transition where the browser has one */
+  (function () {
+    var still = matchMedia('(prefers-reduced-motion: reduce)'), current = null;
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('header.nav a[href^="#"], .tabbar a[href^="#"], footer a[href^="#"]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      var id = a.getAttribute('href').slice(1), el = id && document.getElementById(id);
+      if (!el || !document.startViewTransition || still.matches) return;   /* the browser's own jump */
+      e.preventDefault();
+      /* a tap while a transition still runs: finish that one at once and start this one */
+      if (current) { try { current.skipTransition(); } catch (err) {} }
+      var done = false;
+      var go = function () { if (done) return; done = true; el.scrollIntoView({ block: 'start', behavior: 'instant' }); history.pushState(null, '', '#' + id); };
+      var vt = current = document.startViewTransition(go);
+      vt.finished.finally(function () { if (current === vt) current = null; });
+      /* never let a stalled transition hold the jump back (a hidden tab draws no frames) */
+      setTimeout(function () { if (!done) { try { vt.skipTransition(); } catch (err) {} go(); } }, 200);
+    });
+  })();
+</script>
+<script>
+  /* the bars show where you are: the section under the middle of the screen lights its word, and each bar's pill slides there */
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var bars = [['.nav__links', '.nav__ind', '.nav__link'], ['.tabbar', '.tabbar__ind', '.tabbar__a']].map(function (b) {
+      var root = document.querySelector(b[0]); if (!root) return null;
+      var links = {}; root.querySelectorAll(b[2] + '[href^="#"]').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+      return { root: root, ind: root.querySelector(b[1]), links: links, cur: null, w0: 0, x0: 0 };
+    }).filter(Boolean);
+    function place(bar, a) {
+      var ind = bar.ind;
+      if (bar.cur) { bar.cur.classList.remove('is-here'); bar.cur.removeAttribute('aria-current'); }
+      bar.cur = a;
+      if (!a) { ind.classList.remove('is-on'); return; }
+      a.classList.add('is-here'); a.setAttribute('aria-current', 'location');
+      var r = bar.root.getBoundingClientRect(), q = a.getBoundingClientRect(), x = q.left - r.left - bar.root.clientLeft, w = q.width;
+      if (!w) { bar.w0 = 0; return; }   /* the bar is hidden at this width */
+      if (!ind.classList.contains('is-on') || !bar.w0) {
+        ind.style.transition = 'none'; ind.style.width = w + 'px'; ind.style.transform = 'translateX(' + x + 'px)';
+        ind.offsetWidth; ind.style.transition = ''; ind.classList.add('is-on');
+      } else {
+        /* the new width at once, drawn at the old one, then it settles: only transform moves */
+        ind.style.transition = 'none'; ind.style.width = w + 'px'; ind.style.transform = 'translateX(' + bar.x0 + 'px) scaleX(' + (bar.w0 / w) + ')';
+        ind.offsetWidth; ind.style.transition = ''; ind.style.transform = 'translateX(' + x + 'px) scaleX(1)';
+      }
+      bar.w0 = w; bar.x0 = x;
+    }
+    var here = null;
+    function show(id) { if (id === 'contact') id = 'iletisim';   /* the closing CV band belongs to the contact word */
+      if (!id) return; here = id; bars.forEach(function (b) { var a = b.links[id]; if (a && a !== b.cur) place(b, a); }); }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) show(e.target.id); });
+    }, { rootMargin: '-48% 0px -50% 0px' });
+    var secs = [].slice.call(document.querySelectorAll('main > section'));
+    var foot = document.querySelector('footer.closing'); if (foot) secs.push(foot);
+    secs.forEach(function (sec) { io.observe(sec); });
+    /* on load: whatever section sits under the middle of the screen now */
+    function atMiddle() { var y = innerHeight / 2; for (var i = 0; i < secs.length; i++) { var r = secs[i].getBoundingClientRect(); if (r.top <= y && r.bottom > y) return secs[i].id; } return null; }
+    show(atMiddle() || 'anasayfa');
+    /* a tap on a word moves its pill at once, before the page has scrolled there */
+    bars.forEach(function (b) { Object.keys(b.links).forEach(function (id) { b.links[id].addEventListener('click', function () { show(id); }); }); });
+    addEventListener('resize', function () { var id = here; bars.forEach(function (b) { b.w0 = 0; b.cur = null; }); here = null; show(id || 'anasayfa'); });
+  })();
+</script>
+<script>
+  /* the theme switch: the visitor's click, kept for the next visit */
+  (function () {
+    var root = document.documentElement, btns = document.querySelectorAll('[data-theme-toggle]');
+    function label() { btns.forEach(function (b) { b.setAttribute('aria-label', root.dataset.theme === 'dark' ? 'Açık temaya geç' : 'Koyu temaya geç'); }); }
+    label();
+    btns.forEach(function (btn) { btn.addEventListener('click', function () {
+      var t = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = t; root.dataset.tone = t; label();
+      try { localStorage.setItem('tema', t); } catch (e) {}
+    }); });
+  })();
+</script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script type="module" src="assets/diagrams/mount.js"></script>
 </body>
 </html>

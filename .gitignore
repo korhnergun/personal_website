@@ -1,0 +1,9 @@
+# yerel çalışma dosyaları (siteye gitmez)
+ornekler/
+.claude/
+.taste-skill/
+shots/
+
+# büyük orijinal tasarım dosyaları (sitede küçültülmüş kopyaları kullanılıyor)
+assets/images/[1-6].jpg
+assets/images/WhatsApp*
