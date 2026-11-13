@@ -242,6 +242,55 @@ html[data-theme="dark"] {
   @media (max-width: 1023px) { .ab-frame { min-height: 480px; margin-top: var(--s-6); } }
   @media (max-width: 639px) { .ab-frame { min-height: 380px; --ab-y: 40px; } .ab-frame .stage > .ab-code { --ay-sm: 40px; width: auto; } .ab-frame::after { display: none; } .ab-code { -webkit-box-reflect: none; } }
 
+  /* ---- phones and tablets ---- */
+  @media (max-width: 1399px) { header.nav .nav__logo { min-width: 44px; min-height: 44px; } }
+  /* tablet: each internship as a row, its window beside its words, so the section fits its screens */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    #deneyim .rail { row-gap: var(--s-7); }
+    #deneyim .rail > li { grid-template-columns: 320px minmax(0, 1fr); column-gap: var(--s-6); row-gap: var(--s-2); align-content: start; }
+    #deneyim .rail > li > .panel { grid-column: 1; grid-row: 1 / span 6; align-self: start; }
+    #deneyim .rail > li > :not(.panel) { grid-column: 2; }
+    #deneyim .rail__dot { display: none; }
+    #deneyim .rail__co { margin-top: 0; }
+  }
+  /* phones: the orbit's labels sit centred on their path, so none runs past the screen's edge */
+  @media (max-width: 639px) {
+    .sat__in { transform: translate(-50%, -50%); }
+    .ct-big { min-height: 44px; }
+  }
+  /* short phones: a smaller orbit, so the hero still ends on the first screen */
+  @media (max-width: 639px) and (max-height: 820px) {
+    .orbit { height: 196px; --r: 86px; margin-top: var(--s-3); } .orbit__scene { width: 112px; height: 112px; } .orbit__glow { width: 260px; height: 260px; }
+  }
+  /* a phone held sideways (short and wide): the hero grows with what it holds, the portrait beside the words,
+     and the tab bar steps aside (the menu button in the top bar opens every section) */
+  @media (max-width: 1023px) and (max-height: 560px) and (orientation: landscape) {
+    :root { --bar: 0px; }
+    .tabbar { display: none; }
+    main > .hero.hero--split { height: auto; min-height: 100svh; }
+    .hero--split .hero__grid { display: grid; align-items: center; }
+    .hero--split .hero__grid > .hero__text { grid-column: 1 / span 7; }
+    .hero--split .hero__grid > .orbit { grid-column: 8 / -1; }
+    .hero--split .orbit { height: 300px; --r: 108px; margin-top: 0; align-self: center; }
+    .hero--split .orbit__scene { width: 150px; height: 150px; } .hero--split .orbit__glow { width: 300px; height: 300px; }
+    .sat__in { transform: translate(-50%, -50%); }
+  }
+  /* very short phones (an older 4-inch screen): the words and the buttons alone */
+  @media (max-width: 639px) and (max-height: 700px) { .hero .orbit { display: none; } }
+  /* the about window on narrow phones: one tab, a tighter gutter, so every line shows whole */
+  @media (max-width: 400px) {
+    .ab-code .ui-code__tab:nth-of-type(2) { display: none; }
+    .ab-code .ui-code__pre { font-size: 12px; }
+    .ab-code .ui-code__ln { padding-left: 34px; padding-right: 8px; }
+    .ab-code .ui-code__ln::before { width: 22px; }
+  }
+  @media (max-width: 340px) { .ab-code .ui-code__pre { font-size: 11.5px; } }
+  /* the tab bar on the narrowest phones: icons only, their words still read out */
+  @media (max-width: 359px) {
+    .tabbar__a { padding-block: 8px; }
+    .tabbar__a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  }
+
   /* experience: the company first, the date as a chip, a rail under three panels */
   #deneyim .panel { --p-h: 220px; height: var(--p-h); overflow: hidden; }
   @media (max-width: 639px) { #deneyim .panel { --p-h: 170px; } }
@@ -324,7 +373,7 @@ html[data-theme="dark"] {
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top">İçeriğe geç</a>
-    <a class="nav__logo" href="#top"><span class="mark mark--initial" aria-hidden="true">K</span><span class="nav__name">Korhan Ergün TUNÇELLİ</span></a>
+    <a class="nav__logo" href="#top" aria-label="Korhan Ergün TUNÇELLİ, başa dön"><span class="mark mark--initial" aria-hidden="true">K</span><span class="nav__name">Korhan Ergün TUNÇELLİ</span></a>
     <nav class="nav__links" aria-label="Ana menü">
       <span class="nav__ind" aria-hidden="true"></span>
       <div class="nav__item"><a class="nav__link" href="#anasayfa">Ana sayfa</a></div>
