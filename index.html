@@ -10,7 +10,9 @@
 <meta property="og:description" content="Web ve backend geliştirici; stajlar, projeler, yetenekler ve tasarımlar.">
 <meta property="og:image" content="https://www.korhanerguntuncelli.com/share.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#F4F6F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1416" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://www.korhanerguntuncelli.com/">
@@ -57,6 +59,7 @@ html[data-theme="dark"] {
 <link rel="stylesheet" href="assets/ui/terminal-run/fragment.css">
 <link rel="stylesheet" href="assets/ui/files/fragment.css">
 <link rel="stylesheet" href="assets/ui/checklist/fragment.css">
+<link rel="stylesheet" href="assets/ui/code/fragment.css">
 <link rel="stylesheet" href="assets/diagrams/diagram.css">
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script src="assets/backgrounds/backgrounds.js"></script>
@@ -99,7 +102,7 @@ html[data-theme="dark"] {
   @media (max-width: 1023px) { header.nav > .nav__bar { --pill-pad: 12px; } .nav__theme--phone { margin-left: auto; } .nav__theme--phone + .nav__toggle { margin-left: var(--s-2); } }
   @media (max-width: 639px) { header.nav { top: 8px; height: 56px; } header.nav > .nav__bar { height: 56px; } header.nav.nav--centre > .nav__bar > .nav__actions { display: none; } }
 
-  .about__term, #projeler .frame--split { --action: var(--ground-ink); --ink: var(--ground-ink); }
+  #projeler .frame--split { --action: var(--ground-ink); }
   html[data-theme="dark"] .footer--statement { background: #1d3b3a; --bg: #1d3b3a; --surface: #24504d; --ink: #e6ecec; --muted: #a9bcbb; --line: rgb(230 236 236 / .14); --line-strong: rgb(230 236 236 / .28); --action: var(--p-action); --action-ink: var(--p-action-ink); color: var(--ink); }
 
   /* hero */
@@ -108,7 +111,10 @@ html[data-theme="dark"] {
   .tabbar { display: none; }
   @media (max-width: 1023px) {
     :root { --bar: calc(76px + env(safe-area-inset-bottom)); }
-    .tabbar { display: flex; position: fixed; z-index: 40; left: 50%; bottom: calc(10px + env(safe-area-inset-bottom)); transform: translateX(-50%); width: min(100% - 16px, 520px); height: 60px; padding: 5px; gap: 0;
+    /* one band across the foot of the screen, the page fading into it, so nothing peeks beside the pill */
+    .tabbar { display: block; position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; height: var(--bar); padding: 6px 0 calc(10px + env(safe-area-inset-bottom)); box-sizing: border-box;
+      background: linear-gradient(to top, var(--bg) 0%, color-mix(in oklab, var(--bg) 80%, transparent) 45%, transparent); }
+    .tabbar__pill { position: relative; display: flex; margin: 0 auto; width: min(100% - 16px, 520px); height: 60px; padding: 5px; gap: 0;
       border-radius: 999px; background: color-mix(in oklab, var(--bg) 86%, transparent); border: 1px solid var(--glass-line); -webkit-backdrop-filter: blur(22px) saturate(1.8); backdrop-filter: blur(22px) saturate(1.8); box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-hi); }
     .tabbar__a { position: relative; z-index: 1; flex: 1 1 0; min-width: 0; display: grid; place-items: center; align-content: center; gap: 2px; border-radius: 999px; color: color-mix(in oklab, var(--ink) 82%, var(--bg)); font-size: 10px; font-weight: 500; line-height: 1.1; transition: color .3s; }
     .tabbar__a svg { width: 21px; height: 21px; }
@@ -144,8 +150,9 @@ html[data-theme="dark"] {
   /* the hero: typed title, ringed buttons, the portrait with its tilted orbit */
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .hero--split .hero__grid { align-items: start; }
+  @media (min-width: 1024px) { .hero--split > .wrap > .hero__grid { flex: 0 0 auto; height: auto; margin-block: auto; } }
   .hero--split .hero__text { align-self: start; }
-  .hero--split .orbit { align-self: start; }
+  @media (min-width: 1024px) { .hero--split .orbit { align-self: stretch; height: auto; min-height: 460px; } .hero--split .orbit__glow { position: absolute; left: 50%; top: 50%; translate: -50% -50%; } }
   .hero__hi { display: block; font-size: 0.36em; line-height: 1.25; letter-spacing: -0.015em; font-weight: 400; margin-bottom: 0.25em; }
   .hero__name { color: var(--accent); }
   .hero__kick { display: inline-flex; align-items: center; gap: var(--s-2); margin: 0 0 var(--s-5); font-size: var(--t-small); font-weight: 500; padding: 6px 12px 6px 10px; border-radius: 99px; border: 1px solid var(--line-strong); }
@@ -205,17 +212,35 @@ html[data-theme="dark"] {
   .orbit__pause { position: absolute; right: 12px; bottom: 12px; grid-area: auto; }
   @media (prefers-reduced-motion: reduce) { .orbit__spin, .sat__face { animation-play-state: paused; } .orbit__pause { display: none; } }
   @media (max-width: 1023px) { .orbit { height: 440px; --r: 180px; margin-top: var(--s-6); } .orbit__glow { width: 340px; height: 340px; } .orbit__path { display: none; } .orbit__scene { width: 230px; height: 230px; } }
-  @media (max-width: 1023px) { .hero--split .orbit { align-self: stretch; } }
+  @media (max-width: 1023px) { .hero--split .orbit { align-self: stretch; } .orbit__pause { bottom: auto; top: 12px; } }
   @media (max-width: 639px) { .orbit { height: 250px; --r: 98px; margin-top: var(--s-5); } .orbit__scene { width: 140px; height: 140px; } .orbit__glow { width: 340px; height: 340px; } .orbit__path { display: none; } .sat__in { font-size: 10.5px; padding: 4px 8px 4px 6px; gap: 4px; } .sat__in b { font-size: 12px; } .sat__dot { width: 9px; height: 9px; } .hero__typed { margin-top: var(--s-2); } }
 
   /* about: the terminal beside the statement */
-  #hakkimda .mo-wh__text { font-size: clamp(26px, 1.4vw + 18px, 38px); line-height: 1.3; }
-  .about__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5); margin: var(--s-7) 0 0; }
-  .about__facts dt { color: var(--muted); font-size: var(--t-label); font-weight: 500; }
-  .about__facts dd { margin: var(--s-1) 0 0; }
-  .about__skills { margin: var(--s-6) 0 0; }
-  .about__term { min-height: 380px; background: var(--ground-bg); border-radius: var(--r-lg); }
-  @media (max-width: 639px) { .about__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .about__term { min-height: 300px; } }
+  /* about: the facts on the left, Korhan.cs in a lit studio on the right; both columns end on one line */
+  :root { --ab-h: clamp(520px, 100svh - 240px, 660px); }
+  #hakkimda .ab-lead { font-size: clamp(18px, .35vw + 15px, 21px); line-height: 1.55; margin: var(--s-5) 0 0; max-width: 52ch; }
+  .ab-grid4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6); margin: var(--s-7) 0 0; }
+  .ab-grid4 > div { border-left: 2px solid var(--accent); padding-left: var(--s-4); }
+  .ab-grid4 dt { color: var(--muted); font-size: var(--t-small); font-weight: 500; }
+  .ab-grid4 dd { margin: 4px 0 0; font: 600 20px/1.2 var(--font-display, inherit); display: flex; align-items: center; gap: 8px; }
+  .ab-live { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent); flex: none; }
+  .ab-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: var(--s-7) 0 0; }
+  .ab-chips li { font-size: 14px; font-weight: 500; padding: 7px 14px; border-radius: 99px; border: 1px solid var(--line-strong); }
+  .ab-frame { position: relative; isolation: isolate; overflow: hidden; min-height: var(--ab-h); border-radius: var(--r-lg); --action: var(--ground-ink);
+    background:
+      radial-gradient(70% 46% at 50% 102%, #b3cbcc 0%, #a2bdbf 45%, transparent 75%),
+      radial-gradient(64% 56% at 50% 34%, #eef5f4 0%, #dbe9e8 30%, #c6dbda 58%, #b2cacb 80%, #a7c1c2 100%); }
+  .ab-frame::after { content: ""; position: absolute; left: 14%; right: 14%; top: calc(var(--ab-y) + 278px); height: 24px; border-radius: 50%; background: radial-gradient(closest-side, rgb(16 34 36 / .28), transparent); filter: blur(6px); opacity: .7; pointer-events: none; }
+  .ab-frame { --ab-y: clamp(64px, calc(var(--ab-h) - 510px), 150px); }
+  .ab-frame .stage > .ab-code { --ay: var(--ab-y); width: min(540px, 100% - 64px); }
+  .ab-code > .ui-code { width: 100%; }
+  .ab-code { -webkit-box-reflect: below 22px linear-gradient(transparent 62%, rgb(0 0 0 / .16)); }
+  @media (min-width: 1024px) {
+    .ab-col { display: flex; flex-direction: column; min-height: var(--ab-h); }
+    .ab-col .ab-chips { margin-top: auto; }
+  }
+  @media (max-width: 1023px) { .ab-frame { min-height: 480px; margin-top: var(--s-6); } }
+  @media (max-width: 639px) { .ab-frame { min-height: 380px; --ab-y: 40px; } .ab-frame .stage > .ab-code { --ay-sm: 40px; width: auto; } .ab-frame::after { display: none; } .ab-code { -webkit-box-reflect: none; } }
 
   /* experience: the company first, the date as a chip, a rail under three panels */
   #deneyim .panel { --p-h: 220px; height: var(--p-h); overflow: hidden; }
@@ -245,7 +270,7 @@ html[data-theme="dark"] {
   .v4 .rows__n { font: 600 13px/1 var(--font-mono); color: var(--amber-text); margin-right: var(--s-4); }
   html[data-theme="dark"] .v4 .rows__n { color: var(--amber); }
   .v4__frame { --ratio: 0px; min-height: 440px; background: var(--ground-bg); --action: var(--ground-ink); }
-  .v4__frame .loop-pause:focus-visible { outline-color: var(--ground-ink); }
+  .v4__frame .loop-pause:focus-visible, .ab-frame .ui-pause:focus-visible { outline-color: var(--ground-ink); }
   @media (max-width: 639px) { .v4__frame { min-height: 720px; margin-top: var(--s-6); } }
   .v4__frame { position: relative; overflow: hidden; }
   .v4__frame > [data-peek-for] { position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: auto; height: auto; }
@@ -258,16 +283,33 @@ html[data-theme="dark"] {
   .wall__item:nth-child(4) { grid-column: span 5; } .wall__item:nth-child(5) { grid-column: span 3; } .wall__item:nth-child(6) { grid-column: span 4; }
   @media (max-width: 639px) { .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; } .wall__item:nth-child(n) { grid-column: span 1; } }
 
-  /* contact: the dark band, the ways set large */
-  .ways { list-style: none; margin: var(--s-7) 0 0; padding: 0; }
-  .ways li { border-top: 1px solid var(--line); }
-  .ways li:last-child { border-bottom: 1px solid var(--line); }
-  .ways a { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: center; gap: var(--s-4); padding: var(--s-5) 0; color: var(--ink); }
-  .ways__v { font: var(--display-weight) clamp(22px, 1.4vw + 12px, 32px)/1.2 var(--font-display); letter-spacing: -0.02em; overflow-wrap: anywhere; }
-  .ways__k { display: block; font: 500 var(--t-label)/1.4 var(--font-text); color: var(--muted); letter-spacing: 0; }
-  .ways .m-arrow { width: 20px; height: 20px; }
-  .contact__form { background: var(--surface); border-radius: var(--r-lg); padding: var(--s-7); }
-  @media (max-width: 639px) { .contact__form { padding: var(--s-6) var(--s-5); } .contact__form textarea { min-height: 400px; } .ways a { padding: var(--s-6) 0; } }
+  /* contact: a deep teal band on both themes with a lit rim rising from below (x.ai's horizon); its own tokens */
+  .ct { position: relative; isolation: isolate; color: var(--ink); background-color: var(--bg);
+    --bg: #0c2f33; --surface: #12404a; --card: #10373c; --field: #0a282c; --ink: #eaf6f5; --muted: #a6c3c3; --line: rgb(234 246 245 / .14); --line-strong: rgb(234 246 245 / .3);
+    --accent: #2dd4bf; --accent-ink: #0c2f33; --action: #2dd4bf; --action-ink: #0c2f33; }
+  html[data-theme="dark"] .ct { --bg: #061517; --card: #0b2124; --field: #071a1c; }
+  /* the planet: a dark disc rising from under the section, its rim lit; drawn as the band's own ground, no extra layer */
+  .ct { background-image:
+      radial-gradient(ellipse 140% 62% at 50% 132%, #0a2427 0 83.6%, rgb(94 234 212 / .9) 84%, rgb(94 234 212 / .3) 85.2%, rgb(45 212 191 / .12) 91%, transparent 100%),
+      radial-gradient(60% 50% at 50% 100%, rgb(45 212 191 / .2), transparent 70%); }
+  html[data-theme="dark"] .ct { background-image:
+      radial-gradient(ellipse 140% 62% at 50% 132%, #041012 0 83.6%, rgb(94 234 212 / .85) 84%, rgb(94 234 212 / .28) 85.2%, rgb(45 212 191 / .1) 91%, transparent 100%),
+      radial-gradient(60% 50% at 50% 100%, rgb(45 212 191 / .16), transparent 70%); }
+  main .ct .section-head h2 { color: var(--accent); }
+  main .ct .section-head h2 .muted { color: var(--muted); }
+  .ct .field :is(input, textarea) { background: var(--field); }
+  .ct .ic-ink { filter: invert(1); }
+  .ct-big { display: inline-flex; align-items: center; gap: var(--s-4); margin-top: var(--s-5); font: var(--display-weight) clamp(24px, 2.2vw + 6px, 40px)/1.1 var(--font-display); letter-spacing: var(--display-tracking); color: var(--ink); overflow-wrap: anywhere; }
+  .ct-big .m-arrow { width: .6em; height: .6em; color: var(--accent); flex: none; }
+  .ct-lede { margin: var(--s-7) 0 0; font-size: var(--t-lead); line-height: 1.5; color: var(--ink); max-width: 40ch; }
+  .ct-pills { list-style: none; padding: 0; margin: var(--s-6) 0 0; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-6); }
+  .ct-pills a { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; color: var(--ink); font-weight: 500; font-size: 17px; }
+  .ct-pills a:hover { color: var(--accent); }
+  .ct-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s-6); }
+  @media (max-width: 1023px) { .ct-card { margin-top: var(--s-7); } }
+  @media (max-width: 639px) { .ct-card { padding: var(--s-5); } .ct textarea { min-height: 240px; } }
+  /* the footer's last line stays above the phone's tab bar at the end of the page */
+  @media (max-width: 1023px) { #contact { padding-bottom: calc(var(--s-6) + var(--bar)); } }
 </style>
 </head>
 <body>
@@ -276,7 +318,7 @@ html[data-theme="dark"] {
            nav nav-centre as the client's floating glass bar, close close-type, footer footer-statement, rhythm surface-pairs,
            buttons pill (the client's rounded ask), mark initial; palette: the client's own (grafit, turkuaz, kehribar)
            through start.mjs brand, with a night grade the visitor can switch; type host; lit ground sky
-     moments: word-highlight in #hakkimda (the about text lights up as it is read),
+     moments: word-highlight in #hakkimda (the about text lights up as it is read; Korhan.cs beside it in a lit studio),
               iris-opens in #yetenek (the page turns to the skills band through a circle) -->
 
 <header class="nav nav--centre">
@@ -345,33 +387,36 @@ html[data-theme="dark"] {
 
   <section class="section" id="hakkimda" data-moment="word-highlight" aria-labelledby="hakkimda-h">
     <div class="wrap grid grid--top">
-      <div class="span-6">
+      <div class="span-5 ab-col">
         <div class="section-head"><h2 id="hakkimda-h">Hakkımda</h2></div>
-        <p class="mo-wh__text">Tekirdağ Namık Kemal Üniversitesi'nden 3.31 ortalamayla mezun oldum. Bugün <strong>web ve backend</strong> yazılım geliştirme ile veritabanı alanlarında çalışıyor, takım içinde problem çözmeyi seviyorum.</p>
-        <dl class="about__facts">
-          <div><dt>Ad</dt><dd>Korhan Ergün TUNÇELLİ</dd></div>
-          <div><dt>Konum</dt><dd>İzmir, Türkiye</dd></div>
-          <div><dt>Diller</dt><dd>İngilizce B2, Almanca A1</dd></div>
-          <div><dt>Durum</dt><dd>Müsait</dd></div>
+        <p class="ab-lead mo-wh__text">Tekirdağ Namık Kemal Üniversitesi'nden 3.31 ortalamayla mezun oldum. Bugün <strong>web ve backend</strong> yazılım geliştirme ile veritabanı alanlarında çalışıyor, takım içinde problem çözmeyi seviyorum.</p>
+        <dl class="ab-grid4">
+          <div><dt>Konum</dt><dd>İzmir</dd></div>
+          <div><dt>Ortalama</dt><dd>3.31 / 4</dd></div>
+          <div><dt>Diller</dt><dd>EN B2 · DE A1</dd></div>
+          <div><dt>Durum</dt><dd><span class="ab-live" aria-hidden="true"></span>Müsait</dd></div>
         </dl>
-        <p class="about__skills">Agile · Takım çalışması · Liderlik · Teknik dokümantasyon · Problem çözme</p>
+        <ul class="ab-chips"><li>Agile</li><li>Takım çalışması</li><li>Liderlik</li><li>Teknik dokümantasyon</li><li>Problem çözme</li></ul>
       </div>
-      <div class="span-6 start-7 frame about__term" role="img" aria-label="Terminalde whoami komutu çalışıyor ve unvanlar satır satır yazılıyor">
-        <div class="stage"><div class="at-rise fit" style="--fit-max:460px;--ax:max(24px, 50% - 230px);--ay:48px;--ay-sm:24px" data-ui-loop aria-hidden="true">
-          <div class="ui ui-panel ui-term" data-ui="terminal-run">
-            <div class="ui-term__head"><span class="ui-dots"><i></i><i></i><i></i></span><span class="ui-term__title">korhan/cv</span><span class="ui-meta">zsh</span><span class="ui-spacer"></span></div>
-            <div class="ui-term__screen" data-term-screen>
-              <div class="ui-term__track" data-term-track>
-                <div class="ui-term__ln ui-term__cmd"><span class="ui-term__cwd">~/<span class="ui-term__up">korhan/</span>cv</span><span class="ui-term__sig">$</span><span class="ui-term__typed" data-term-cmd>whoami --detay</span></div>
-                <div class="ui-term__ln ui-term__meter" data-term-out data-term-meter><span class="ui-term__bar" style="--p:1"><i></i></span><span class="ui-term__count" data-term-count>4 / 4 alan</span></div>
-                <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">Bilgisayar mühendisi</span><span class="ui-term__n">unvan</span></div>
-                <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">C#, ASP.NET MVC5, SQL</span><span class="ui-term__n">backend</span></div>
-                <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">React, JavaScript</span><span class="ui-term__n">arayüz</span></div>
-                <div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">Procreate, Figma</span><span class="ui-term__n">tasarım</span></div>
-                <div class="ui-term__ln ui-term__done" data-term-out data-term-done><span class="ui-term__ok"><svg viewBox="0 0 16 16"><path d="m4.5 8.3 2.4 2.4 4.6-5"/></svg></span><b>Müsait</b><span class="ui-term__dim">İzmir</span></div>
-                <div class="ui-term__ln ui-term__cmd" data-term-next><span class="ui-term__cwd">~/<span class="ui-term__up">korhan/</span>cv</span><span class="ui-term__sig">$</span><span class="ui-term__typed"></span><i class="ui-term__caret"></i></div>
-              </div>
+      <div class="span-6 start-7 frame ab-frame" data-visual role="img" aria-label="Korhan.cs dosyasında şehir, ortalama, diller ve durum satırları sırayla vurgulanıyor">
+        <div class="stage"><div class="at-rise ab-code" style="--ax:max(32px, 50% - 270px)" data-ui-loop aria-hidden="true">
+          <div class="ui ui-panel ui-code" data-ui="code">
+            <div class="ui-code__tabs">
+              <span class="ui-code__tab is-on"><i class="ui-code__lang">C#</i>Korhan.cs</span>
+              <span class="ui-code__tab"><i class="ui-code__lang">C#</i>Stajlar.cs</span>
+              <span class="ui-spacer"></span>
+              <span class="ui-chip ui-chip--plain ui-code__chip" data-code-chip>derlendi</span>
             </div>
+            <pre class="ui-code__pre"><code><span class="ui-code__ln" data-n="1"><span class="k">public record</span> <span class="f">Korhan</span></span>
+<span class="ui-code__ln" data-n="2">{</span>
+<span class="ui-code__ln" data-n="3" data-note="İzmir'de yaşıyorum.">  <span class="k">string</span> Sehir = <span class="n">"İzmir"</span>;</span>
+<span class="ui-code__ln is-mark" data-n="4">  <span class="k">double</span> Ortalama = <span class="n">3.31</span>;</span>
+<span class="ui-code__ln" data-n="5" data-note="İngilizcem iş seviyesinde.">  <span class="k">string</span>[] Diller =</span>
+<span class="ui-code__ln" data-n="6">    [<span class="n">"EN B2"</span>, <span class="n">"DE A1"</span>];</span>
+<span class="ui-code__ln" data-n="7">  <span class="c">// web, backend, veritabanı</span></span>
+<span class="ui-code__ln" data-n="8" data-note="Yeni işlere müsaitim.">  <span class="k">bool</span> Musait = <span class="k">true</span>;</span>
+<span class="ui-code__ln" data-n="9">}</span></code></pre>
+            <div class="ui-code__hint" data-code-hint><span class="ui-dot"></span><span data-code-text>NKÜ bilgisayar mühendisliği mezunu.</span></div>
           </div>
         </div></div>
       </div>
@@ -498,18 +543,19 @@ html[data-theme="dark"] {
     </div>
   </section>
 
-  <section class="section ground-inverse contact" id="iletisim" style="--hm: 2" aria-labelledby="iletisim-h">
+  <section class="section ct ct--horizon" id="iletisim" aria-labelledby="iletisim-h">
     <div class="wrap grid grid--top">
       <div class="span-6">
-        <div class="section-head"><h2 id="iletisim-h">İletişim. <span class="muted">Yeni projeler, iş birlikleri ya da sadece merhaba demek için.</span></h2></div>
-        <ul class="ways ic-dark">
-          <li><a href="mailto:korhanergunt2@gmail.com"><img class="ic ic-28" src="assets/icons/gmail.svg" alt=""><span class="ways__v"><span class="ways__k">E-posta</span>korhanergunt2@gmail.com</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></li>
-          <li><a href="https://www.linkedin.com/in/korhnergun/" target="_blank" rel="noopener"><img class="ic ic-28" src="assets/icons/linkedin-icon.svg" alt=""><span class="ways__v"><span class="ways__k">LinkedIn</span>in/korhnergun</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></li>
-          <li><a href="https://github.com/korhnergun" target="_blank" rel="noopener"><img class="ic ic-28 ic-ink" src="assets/icons/github-icon.svg" alt=""><span class="ways__v"><span class="ways__k">GitHub</span>korhnergun</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></li>
-          <li><a href="https://www.instagram.com/korhnergun" target="_blank" rel="noopener"><img class="ic ic-28 ic-ink" src="assets/icons/instagram-icon.svg" alt=""><span class="ways__v"><span class="ways__k">Instagram</span>@korhnergun</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></li>
+        <div class="section-head"><h2 id="iletisim-h">İletişim. <span class="muted">Bir e-posta yeter.</span></h2></div>
+        <a class="ct-big" href="mailto:korhanergunt2@gmail.com">korhanergunt2@gmail.com<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+        <p class="ct-lede">Yeni projeler, iş birlikleri ya da sadece merhaba demek için yazın; diğer hesaplarım da burada.</p>
+        <ul class="ct-pills">
+          <li><a href="https://www.linkedin.com/in/korhnergun/" target="_blank" rel="noopener"><img class="ic ic-28" src="assets/icons/linkedin-icon.svg" alt="">LinkedIn</a></li>
+          <li><a href="https://github.com/korhnergun" target="_blank" rel="noopener"><img class="ic ic-28 ic-ink" src="assets/icons/github-icon.svg" alt="">GitHub</a></li>
+          <li><a href="https://www.instagram.com/korhnergun" target="_blank" rel="noopener"><img class="ic ic-28 ic-ink" src="assets/icons/instagram-icon.svg" alt="">Instagram</a></li>
         </ul>
       </div>
-      <div class="span-6 start-7 contact__form">
+      <div class="span-6 start-7 ct-card">
         <form class="form" action="https://formsubmit.co/korhanergunt2@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/korhanergunt2@gmail.com" data-sent="Mesajınız gönderildi. E-postanıza dönüş yapacağım." novalidate>
           <input type="hidden" name="_subject" value="Kişisel site: yeni iletişim mesajı">
           <input type="hidden" name="_template" value="table">
@@ -531,15 +577,8 @@ html[data-theme="dark"] {
   </section>
 </main>
 
-<footer class="footer closing footer--statement" id="contact" aria-labelledby="close-h">
+<footer class="footer footer--statement" id="contact" aria-label="Site haritası">
   <div class="wrap">
-    <div class="closing__cta close--type">
-      <div class="section-head">
-        <h2 id="close-h">Özgeçmişimin tamamı tek PDF'te</h2>
-        <p class="t-small">Eğitim, stajlar, projeler ve referanslar.</p>
-      </div>
-      <a class="btn btn--primary btn--xl btn--wide" href="Korhan%20Erg%C3%BCn%20TUN%C3%87ELL%C4%B0%20CV.pdf" download>CV'mi indirin<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-    </div>
     <div class="closing__links">
       <div class="grid">
         <div class="span-4 stack-4">
@@ -558,7 +597,7 @@ html[data-theme="dark"] {
   </div>
 </footer>
 
-<nav class="tabbar" aria-label="Bölümler">
+<nav class="tabbar" aria-label="Bölümler"><div class="tabbar__pill">
   <span class="tabbar__ind" aria-hidden="true"></span>
   <a class="tabbar__a" href="#anasayfa"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Giriş</span></a>
   <a class="tabbar__a" href="#hakkimda"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Hakkımda</span></a>
@@ -567,7 +606,7 @@ html[data-theme="dark"] {
   <a class="tabbar__a" href="#projeler"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 19a5 5 0 0 1-5-5v8"/><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5"/><circle cx="13" cy="12" r="2"/><circle cx="20" cy="19" r="2"/></svg><span>Proje</span></a>
   <a class="tabbar__a" href="#tasarim"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20a10 9 0 0 1 10 9a5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg><span>Tasarım</span></a>
   <a class="tabbar__a" href="#iletisim"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg><span>İletişim</span></a>
-</nav>
+</div></nav>
 <script>
   /* the typed title: typed, held, erased, the next one; two rounds, then it rests on the first */
   (function () {
@@ -613,7 +652,9 @@ html[data-theme="dark"] {
       var done = false;
       var go = function () { if (done) return; done = true; el.scrollIntoView({ block: 'start', behavior: 'instant' }); history.pushState(null, '', '#' + id); };
       var vt = current = document.startViewTransition(go);
-      vt.finished.finally(function () { if (current === vt) current = null; });
+      var hush = function () {};
+      vt.ready.catch(hush); vt.updateCallbackDone.catch(hush);
+      vt.finished.catch(hush).finally(function () { if (current === vt) current = null; });
       /* never let a stalled transition hold the jump back (a hidden tab draws no frames) */
       setTimeout(function () { if (!done) { try { vt.skipTransition(); } catch (err) {} go(); } }, 200);
     });
@@ -623,7 +664,7 @@ html[data-theme="dark"] {
   /* the bars show where you are: the section under the middle of the screen lights its word, and each bar's pill slides there */
   (function () {
     if (!('IntersectionObserver' in window)) return;
-    var bars = [['.nav__links', '.nav__ind', '.nav__link'], ['.tabbar', '.tabbar__ind', '.tabbar__a']].map(function (b) {
+    var bars = [['.nav__links', '.nav__ind', '.nav__link'], ['.tabbar__pill', '.tabbar__ind', '.tabbar__a']].map(function (b) {
       var root = document.querySelector(b[0]); if (!root) return null;
       var links = {}; root.querySelectorAll(b[2] + '[href^="#"]').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
       return { root: root, ind: root.querySelector(b[1]), links: links, cur: null, w0: 0, x0: 0 };
@@ -653,7 +694,7 @@ html[data-theme="dark"] {
       es.forEach(function (e) { if (e.isIntersecting) show(e.target.id); });
     }, { rootMargin: '-48% 0px -50% 0px' });
     var secs = [].slice.call(document.querySelectorAll('main > section'));
-    var foot = document.querySelector('footer.closing'); if (foot) secs.push(foot);
+    var foot = document.querySelector('footer#contact'); if (foot) secs.push(foot);
     secs.forEach(function (sec) { io.observe(sec); });
     /* on load: whatever section sits under the middle of the screen now */
     function atMiddle() { var y = innerHeight / 2; for (var i = 0; i < secs.length; i++) { var r = secs[i].getBoundingClientRect(); if (r.top <= y && r.bottom > y) return secs[i].id; } return null; }
