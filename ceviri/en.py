@@ -234,7 +234,6 @@ PAIRS = [
     ('<span class="cert-date">Temmuz 2024</span>', '<span class="cert-date">July 2024</span>', 1),
     ('aria-label="Kapatın"', 'aria-label="Close"', 1),
     ('target="_blank" rel="noopener">Sertifikayı doğrulayın<svg', 'target="_blank" rel="noopener">Verify the certificate<svg', 1),
-    (">PDF'i indirin</a>", '>Download the PDF</a>', 1),
     ('aria-label="Önceki sertifika"', 'aria-label="Previous certificate"', 1),
     ('aria-label="Sonraki sertifika"', 'aria-label="Next certificate"', 1),
     ('aria-label="Sayfanın başına dönün"', 'aria-label="Back to the top"', 1),

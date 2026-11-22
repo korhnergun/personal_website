@@ -172,7 +172,6 @@ Bu dosya `python ceviri/en.py` ile İngilizce sayfayla birlikte yeniden yazılı
 | Temmuz 2024 | July 2024 |
 | Kapatın | Close |
 | Sertifikayı doğrulayın | Verify the certificate |
-| PDF'i indirin | Download the PDF |
 | Önceki sertifika | Previous certificate |
 | Sonraki sertifika | Next certificate |
 | Sayfanın başına dönün | Back to the top |

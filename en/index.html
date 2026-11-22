@@ -396,6 +396,7 @@ html[data-theme="dark"] {
   .vw__o, .vw__x2 { margin: 0; color: var(--muted); } .vw__d { margin: 0; }
   .vw__acts { display: grid; gap: var(--s-4); justify-items: start; margin-top: var(--s-5); }
   .vw__acts [hidden] { display: none; }
+  .vw__acts:not(:has(> :not([hidden]))) { display: none; }   /* a certificate with no verify page: no empty row */
   .vw__nav { display: flex; gap: var(--s-2); margin-top: auto; }
   .vw__btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; }
   .vw__strip { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0 0 4px; display: flex; gap: 12px; overflow-x: auto; scrollbar-width: thin; }
@@ -715,27 +716,27 @@ html[data-theme="dark"] {
     <div class="wrap">
       <div class="section-head section-head--row"><div><h2 id="sertifika-h">My certificates. <span class="muted">Six of them.</span></h2></div><a class="link all-link" href="#sertifika-goruntuleyici" data-doc="0" aria-haspopup="dialog">View all (6)<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
       <div class="grid kgrid kgrid--3">
-        <a class="card kc kc3" href="../assets/sertifikalar/prompt.pdf" data-doc="0" data-img="../assets/sertifikalar/prompt.jpg" data-date="21 November 2026" data-x="Geleceği Yazanlar exam · Turkcell Akademi" data-v="" aria-haspopup="dialog">
+        <a class="card kc kc3" href="../assets/sertifikalar/prompt.jpg" data-doc="0" data-img="../assets/sertifikalar/prompt.jpg" data-date="21 November 2026" data-x="Geleceği Yazanlar exam · Turkcell Akademi" data-v="" aria-haspopup="dialog">
           <span class="kc3__shot g-0 at-rise"><img src="../assets/sertifikalar/prompt-k.jpg" alt="Prompt Engineering certificate of achievement" width="640" height="453" loading="lazy"></span>
           <span class="kc3__txt"><b>Prompt Engineering</b><span class="kc__meta"><span>Turkcell Geleceği Yazanlar</span><span class="cert-date">November 2026</span></span></span>
         </a>
-        <a class="card kc kc3" href="../assets/sertifikalar/python201.pdf" data-doc="1" data-img="../assets/sertifikalar/python201.jpg" data-date="21 November 2026" data-x="Geleceği Yazanlar exam · Turkcell Akademi" data-v="" aria-haspopup="dialog">
+        <a class="card kc kc3" href="../assets/sertifikalar/python201.jpg" data-doc="1" data-img="../assets/sertifikalar/python201.jpg" data-date="21 November 2026" data-x="Geleceği Yazanlar exam · Turkcell Akademi" data-v="" aria-haspopup="dialog">
           <span class="kc3__shot g-1 at-corner"><img src="../assets/sertifikalar/python201-k.jpg" alt="Python Programming 201 certificate of achievement" width="640" height="453" loading="lazy"></span>
           <span class="kc3__txt"><b>Python Programming 201</b><span class="kc__meta"><span>Turkcell Geleceği Yazanlar</span><span class="cert-date">November 2026</span></span></span>
         </a>
-        <a class="card kc kc3" href="../assets/sertifikalar/python101.pdf" data-doc="2" data-img="../assets/sertifikalar/python101.jpg" data-date="21 November 2026" data-x="Geleceği Yazanlar exam · Turkcell Akademi" data-v="" aria-haspopup="dialog">
+        <a class="card kc kc3" href="../assets/sertifikalar/python101.jpg" data-doc="2" data-img="../assets/sertifikalar/python101.jpg" data-date="21 November 2026" data-x="Geleceği Yazanlar exam · Turkcell Akademi" data-v="" aria-haspopup="dialog">
           <span class="kc3__shot g-0 at-right"><img src="../assets/sertifikalar/python101-k.jpg" alt="Python Programming 101 certificate of achievement" width="640" height="453" loading="lazy"></span>
           <span class="kc3__txt"><b>Python Programming 101</b><span class="kc__meta"><span>Turkcell Geleceği Yazanlar</span><span class="cert-date">November 2026</span></span></span>
         </a>
-        <a class="card kc kc3" href="../assets/sertifikalar/mvc5.pdf" data-doc="3" data-img="../assets/sertifikalar/mvc5.jpg" data-date="3 July 2025" data-x="Instructor: Murat Yücedağ · 7.5 hours" data-v="https://ude.my/UC-f3cef625-67f6-4621-9156-5460bfeff0fb" aria-haspopup="dialog">
+        <a class="card kc kc3" href="../assets/sertifikalar/mvc5.jpg" data-doc="3" data-img="../assets/sertifikalar/mvc5.jpg" data-date="3 July 2025" data-x="Instructor: Murat Yücedağ · 7.5 hours" data-v="https://ude.my/UC-f3cef625-67f6-4621-9156-5460bfeff0fb" aria-haspopup="dialog">
           <span class="kc3__shot g-1 at-rise"><img src="../assets/sertifikalar/mvc5-k.jpg" alt="Certificate of completion: a dynamic CV site with an admin panel in MVC5, from scratch" width="640" height="476" loading="lazy"></span>
           <span class="kc3__txt"><b>A Dynamic CV Site with an Admin Panel in MVC5, from Scratch</b><span class="kc__meta"><span>Udemy</span><span class="cert-date">July 2025</span></span></span>
         </a>
-        <a class="card kc kc3" href="../assets/sertifikalar/efset.pdf" data-doc="4" data-img="../assets/sertifikalar/efset.jpg" data-date="22 February 2025" data-x="Score 56/100 · B2 Upper Intermediate (reading and listening)" data-v="https://cert.efset.org/hpbfGy" aria-haspopup="dialog">
+        <a class="card kc kc3" href="../assets/sertifikalar/efset.jpg" data-doc="4" data-img="../assets/sertifikalar/efset.jpg" data-date="22 February 2025" data-x="Score 56/100 · B2 Upper Intermediate (reading and listening)" data-v="https://cert.efset.org/hpbfGy" aria-haspopup="dialog">
           <span class="kc3__shot g-0 at-corner"><img src="../assets/sertifikalar/efset-k.jpg" alt="EF SET English Certificate, B2 Upper Intermediate" width="420" height="594" loading="lazy"></span>
           <span class="kc3__txt"><b>English Certificate</b><span class="kc__meta"><span>EF SET</span><span class="cert-date">February 2025</span></span></span>
         </a>
-        <a class="card kc kc3" href="../assets/sertifikalar/git.pdf" data-doc="5" data-img="../assets/sertifikalar/git.jpg" data-date="17 July 2024" data-x="Instructor: Emre Altunbilek · 5.5 hours" data-v="https://ude.my/UC-b3cb3476-cf91-47e9-9a10-c10ab635f075" aria-haspopup="dialog">
+        <a class="card kc kc3" href="../assets/sertifikalar/git.jpg" data-doc="5" data-img="../assets/sertifikalar/git.jpg" data-date="17 July 2024" data-x="Instructor: Emre Altunbilek · 5.5 hours" data-v="https://ude.my/UC-b3cb3476-cf91-47e9-9a10-c10ab635f075" aria-haspopup="dialog">
           <span class="kc3__shot g-1 at-right"><img src="../assets/sertifikalar/git-k.jpg" alt="Certificate of completion: using Git and GitHub with Sourcetree" width="640" height="476" loading="lazy"></span>
           <span class="kc3__txt"><b>Using Git and GitHub with Sourcetree</b><span class="kc__meta"><span>Udemy</span><span class="cert-date">July 2024</span></span></span>
         </a>
@@ -821,7 +822,7 @@ html[data-theme="dark"] {
       <p class="vw__o"></p>
       <p class="vw__d cert-date"></p>
       <p class="vw__x2"></p>
-      <div class="vw__acts"><a class="btn btn--primary vw__verify" href="#sertifika" target="_blank" rel="noopener">Verify the certificate<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="link vw__pdf" href="#sertifika" download>Download the PDF</a></div>
+      <div class="vw__acts"><a class="btn btn--primary vw__verify" href="#sertifika" target="_blank" rel="noopener">Verify the certificate<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
       <div class="vw__nav"><button class="vw__btn" type="button" data-step="-1" aria-label="Previous certificate"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="vw__btn" type="button" data-step="1" aria-label="Next certificate"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     </div>
     <ol class="vw__strip"></ol>
@@ -960,7 +961,6 @@ html[data-theme="dark"] {
       dlg.querySelector('.vw__d').textContent = c.dataset.date;
       dlg.querySelector('.vw__x2').textContent = c.dataset.x;
       var v = dlg.querySelector('.vw__verify'); v.hidden = !c.dataset.v; if (c.dataset.v) v.href = c.dataset.v;
-      dlg.querySelector('.vw__pdf').href = c.getAttribute('href');
       ths.forEach(function (b, i) { b.setAttribute('aria-current', i === cur ? 'true' : 'false'); });
       ths[cur].scrollIntoView({ block: 'nearest', inline: 'nearest' });
     }
