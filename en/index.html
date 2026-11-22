@@ -80,7 +80,7 @@ html[data-theme="dark"] {
     width: min(100% - 2 * var(--gut) + 2 * var(--pill-pad), 1280px + 2 * var(--pill-pad)); padding: 0 var(--pill-pad); --pill-pad: 20px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-line);
     -webkit-backdrop-filter: blur(22px) saturate(1.8); backdrop-filter: blur(22px) saturate(1.8);
     box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-hi); }
-  @media (min-width: 1024px) { header.nav.nav--centre > .nav__bar { grid-template-columns: minmax(0, 1fr) auto; } header.nav.nav--centre .nav__links { grid-column: 1; } header.nav.nav--centre .nav__actions { grid-column: 2; } .nav__theme.nav__theme--phone { display: none; } }
+  @media (min-width: 1024px) { .nav__theme.nav__theme--phone { display: none; } }
   .nav__link { border-radius: 999px; }
   /* the section you are on: a pill slides under its word as you move down the page (the client's ask, Instagram's tab bar) */
   .nav__links { position: relative; }
@@ -95,18 +95,40 @@ html[data-theme="dark"] {
   .nav__link { transition: color .3s ease; }
   /* 1024 to 1439: eight words and the buttons do not fit one row, so the Home word steps out (the back-to-top disc is the way home) */
   @media (min-width: 1024px) and (max-width: 1439px) { .nav__links .nav__item:has(> a[href="#anasayfa"]) { display: none; } }
-  @media (min-width: 1024px) and (max-width: 1439px) { header.nav .nav__link { padding-inline: 10px; font-size: 14px; } header.nav.nav--centre > .nav__bar { gap: var(--s-3); } }
+  @media (min-width: 1024px) and (max-width: 1439px) { header.nav .nav__link { padding-inline: 10px; font-size: 14px; } }
   .nav__link.is-here, .nav__link.is-here:hover { color: var(--accent-ink); }
   @media (max-width: 1023px) { .nav__ind { display: none; } }
   @media (prefers-reduced-motion: reduce) { .nav__ind { transition: opacity .2s; } }
 
   .nav__actions { gap: var(--s-2); }
-  /* eight words: the bar runs wider than the page's lines (24px from the window's sides), and keeps
-     logo, words and buttons in one row up to 1599 (the words centred in what is left) */
+  /* 1024 and up: the bar's box runs from the page's left line to its right one; inside it the section words and the
+     CV button share one glass capsule in the middle of the page, and the language switch and the theme button sit to
+     its right, each on its own glass (on a narrower screen the capsule moves left just enough to leave them room) */
   @media (min-width: 1024px) { header.nav > .nav__bar { --bw: min(100% - 2 * var(--s-5), 1440px); width: var(--bw); max-width: none; padding-inline: calc((var(--bw) - min(1280px, 100% - 2 * var(--gut))) / 2); } }
-  @media (min-width: 1440px) { header.nav.nav--centre > .nav__bar { gap: var(--s-4); } }
-  @media (min-width: 1024px) { header.nav .nav__links { justify-content: flex-start; } }
-  @media (min-width: 1024px) and (max-width: 1179px) { header.nav .nav__link { padding-inline: 6px; font-size: 13.5px; } header.nav.nav--centre > .nav__bar { gap: var(--s-2); } }
+  @media (min-width: 1024px) {
+    header.nav.nav--centre > .nav__bar { grid-template-columns: minmax(0, 1fr) auto auto minmax(max-content, 1fr); gap: var(--s-2);
+      background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    header.nav.nav--centre > .nav__bar::before { content: ""; grid-column: 2 / 4; grid-row: 1; align-self: stretch; margin-inline: -6px; border-radius: 999px; z-index: -1;
+      background: var(--glass); border: 1px solid var(--glass-line); -webkit-backdrop-filter: blur(22px) saturate(1.8); backdrop-filter: blur(22px) saturate(1.8);
+      box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-hi); }
+    header.nav.nav--centre .nav__actions { display: contents; }
+    header.nav.nav--centre > .nav__bar > *, header.nav.nav--centre .nav__actions > * { grid-row: 1; }
+    /* the words take equal slots (the widest word's), so the pill over the section you are on is one size on every word */
+    header.nav.nav--centre .nav__links { grid-column: 2; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; }
+    header.nav .nav__item { display: flex; }
+    header.nav .nav__link { width: 100%; justify-content: center; }
+    header.nav.nav--centre .nav__actions .btn { grid-column: 3; margin-right: 6px; }
+    header.nav.nav--centre .nav__actions .lang { grid-column: 4; justify-self: end; margin-right: 52px; }
+    header.nav.nav--centre .nav__actions .nav__theme { grid-column: 4; justify-self: end; }
+    header.nav .nav__actions :is(.lang, .nav__theme) { background: var(--glass); -webkit-backdrop-filter: blur(22px) saturate(1.8); backdrop-filter: blur(22px) saturate(1.8);
+      box-shadow: var(--glass-shadow), inset 0 0 0 1px var(--glass-line); }
+  }
+  /* the capsule stays in the middle where the words fit: their slots narrow with the screen (English words run longer),
+     and from 1024 to 1179 the words step down to 13px and the CV button to its compact size, so nothing is squeezed */
+  @media (min-width: 1440px) { html[lang="en"] header.nav .nav__link { padding-inline: 8px; } }
+  @media (min-width: 1280px) and (max-width: 1439px) { html[lang="en"] header.nav .nav__link { padding-inline: 6px; } }
+  @media (min-width: 1180px) and (max-width: 1279px) { header.nav .nav__link { padding-inline: 4px; } }
+  @media (min-width: 1024px) and (max-width: 1179px) { header.nav .nav__link { padding-inline: 2px; font-size: 13px; } header.nav .nav__actions .btn { padding-inline: 16px; font-size: 14px; } }
   /* the open menu (under 1024): the glass blur on the bar would make the sheet's fixed position relative to the 64px
      pill, so the open bar is solid, and the sheet starts under the floating bar. The bar already holds the language
      switch and the theme button, so the sheet's foot keeps only the CV button. */
