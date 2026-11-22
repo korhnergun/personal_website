@@ -22,7 +22,6 @@ Bu dosya `python ceviri/en.py` ile İngilizce sayfayla birlikte yeniden yazılı
 | Koyu temaya geç | Switch to dark theme |
 | Menü | Menu |
 | Dil seçimi | Language |
-| Giriş | Home |
 | Yetenek | Skills |
 | Proje | Projects |
 | Tasarım | Designs |
@@ -146,4 +145,36 @@ Bu dosya `python ceviri/en.py` ile İngilizce sayfayla birlikte yeniden yazılı
 | İşler | Work |
 | Bağlantılar | Links |
 | Ürün adları ve logolar sahiplerinin ticari markalarıdır. | Product names and logos are trademarks of their respective owners. |
+| Sertifikalar | Certificates |
+| Sertifika | Certificates |
+| Sertifikalarım. Altı belge. | My certificates. Six of them. |
+| Tümünü görüntüleyin (6) | View all (6) |
+| Prompt Mühendisliği | Prompt Engineering |
+| Prompt Mühendisliği başarı belgesi | Prompt Engineering certificate of achievement |
+| Python Programlama 201 | Python Programming 201 |
+| Python Programlama 201 başarı belgesi | Python Programming 201 certificate of achievement |
+| Python Programlama 101 | Python Programming 101 |
+| Python Programlama 101 başarı belgesi | Python Programming 101 certificate of achievement |
+| Mvc5 ile Sıfırdan Admin Panelli Dinamik CV Sitesi | A Dynamic CV Site with an Admin Panel in MVC5, from Scratch |
+| Mvc5 ile Sıfırdan Admin Panelli Dinamik CV Sitesi bitirme sertifikası | Certificate of completion: a dynamic CV site with an admin panel in MVC5, from scratch |
+| Sourcetree ile Git ve GitHub Kullanımı | Using Git and GitHub with Sourcetree |
+| Sourcetree ile Git ve GitHub Kullanımı bitirme sertifikası | Certificate of completion: using Git and GitHub with Sourcetree |
+| Geleceği Yazanlar sınavı · Turkcell Akademi | Geleceği Yazanlar exam · Turkcell Akademi |
+| Eğitmen: Murat Yücedağ · 7,5 saat | Instructor: Murat Yücedağ · 7.5 hours |
+| Eğitmen: Emre Altunbilek · 5,5 saat | Instructor: Emre Altunbilek · 5.5 hours |
+| 56/100 puan · B2 Upper Intermediate (okuma ve dinleme) | Score 56/100 · B2 Upper Intermediate (reading and listening) |
+| 21 Kasım 2026 | 21 November 2026 |
+| 3 Temmuz 2025 | 3 July 2025 |
+| 22 Şubat 2025 | 22 February 2025 |
+| 17 Temmuz 2024 | 17 July 2024 |
+| Kasım 2026 | November 2026 |
+| Temmuz 2025 | July 2025 |
+| Şubat 2025 | February 2025 |
+| Temmuz 2024 | July 2024 |
+| Kapatın | Close |
+| Sertifikayı doğrulayın | Verify the certificate |
+| PDF'i indirin | Download the PDF |
+| Önceki sertifika | Previous certificate |
+| Sonraki sertifika | Next certificate |
+| Sayfanın başına dönün | Back to the top |
 | root.dataset.theme === 'dark' ? 'Açık temaya geç' : 'Koyu temaya geç' | root.dataset.theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme' |

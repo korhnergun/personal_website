@@ -101,6 +101,12 @@ html[data-theme="dark"] {
   @media (prefers-reduced-motion: reduce) { .nav__ind { transition: opacity .2s; } }
 
   .nav__actions { gap: var(--s-2); }
+  /* eight words: the bar runs wider than the page's lines (24px from the window's sides), and keeps
+     logo, words and buttons in one row up to 1599 (the words centred in what is left) */
+  @media (min-width: 1024px) { header.nav > .nav__bar { --bw: min(100% - 2 * var(--s-5), 1440px); width: var(--bw); max-width: none; padding-inline: calc((var(--bw) - min(1280px, 100% - 2 * var(--gut))) / 2); } }
+  @media (min-width: 1440px) { header.nav.nav--centre > .nav__bar { grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--s-4); } }
+  @media (min-width: 1024px) { header.nav .nav__links { justify-content: center; } }
+  @media (min-width: 1024px) and (max-width: 1179px) { header.nav .nav__link { padding-inline: 6px; font-size: 13.5px; } header.nav.nav--centre > .nav__bar { gap: var(--s-2); } }
   /* the open menu (under 1024): the glass blur on the bar would make the sheet's fixed position relative to the 64px
      pill, so the open bar is solid, and the sheet starts under the floating bar. The bar already holds the language
      switch and the theme button, so the sheet's foot keeps only the CV button. */
@@ -126,7 +132,8 @@ html[data-theme="dark"] {
   .nav__theme svg { width: 18px; height: 18px; }
   .nav__theme .i-sun, html[data-theme="dark"] .nav__theme .i-moon { display: none; }
   html[data-theme="dark"] .nav__theme .i-sun { display: block; }
-  @media (max-width: 1399px) { .nav__logo .nav__name { display: none; } }
+  /* eight words and the buttons fill the page's 1280px line: the logo is the mark alone (the name is the hero's h1) */
+  .nav__logo .nav__name { display: none; }
   @media (max-width: 1023px) { header.nav > .nav__bar { --pill-pad: 12px; } .nav__theme--phone { margin-left: auto; } .nav__theme--phone + .nav__toggle { margin-left: var(--s-2); } }
   @media (max-width: 639px) { header.nav { top: 8px; height: 56px; } header.nav > .nav__bar { height: 56px; } header.nav.nav--centre > .nav__bar > .nav__actions { display: none; } }
 
@@ -314,12 +321,86 @@ html[data-theme="dark"] {
   }
   @media (max-width: 340px) { .ab-code .ui-code__pre { font-size: 11.5px; } }
   /* English labels run longer ("Experience"): a hair smaller on narrow phones so none is cut */
-  @media (max-width: 400px) { html[lang="en"] .tabbar__pill { padding-inline: 3px; } html[lang="en"] .tabbar__a span { font-size: 9.5px; letter-spacing: -0.01em; } }
   /* the tab bar on the narrowest phones: icons only, their words still read out */
   @media (max-width: 359px) {
     .tabbar__a { padding-block: 8px; }
     .tabbar__a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   }
+
+  /* certificates: showcase cards one step off the ground, the certificate small in a lit tile, the whole card opens the viewer */
+  .kgrid { row-gap: var(--s-5); }
+  .kgrid--3 > .kc { grid-column: span 4; } .kgrid--4 > .kc { grid-column: span 3; }
+  .kc { position: relative; display: grid; padding: 8px; color: var(--ink); text-decoration: none; background: #ffffff; border: 1px solid color-mix(in oklab, var(--ink) 11%, transparent); border-radius: var(--r-lg); }
+  html[data-theme="dark"] .kc { background: color-mix(in oklab, var(--p-surface) 70%, #2a3438); box-shadow: inset 0 1px 0 rgb(255 255 255 / .06); border-color: rgb(255 255 255 / .09); }
+  .kc:focus-visible { outline: 2px solid var(--action); outline-offset: 3px; }
+  .kc__meta { display: flex; justify-content: space-between; gap: var(--s-3); margin: 6px 0 0; color: var(--muted); font-size: 13.5px; }
+  .cert-date { font: 600 12.5px/1.3 var(--font-mono); letter-spacing: .02em; color: var(--amber-text); white-space: nowrap; }
+  html[data-theme="dark"] .cert-date { color: var(--amber); }
+  .kc3__shot { display: grid; grid-template-rows: minmax(0, 1fr); justify-items: center; height: 150px; padding: 12px; border-radius: 14px; overflow: hidden; }
+  .kc3__shot.g-0 { background: radial-gradient(110% 100% at 50% 0%, #e8f3f2, #c3dbd8 72%); }
+  .kc3__shot.g-1 { background: radial-gradient(110% 100% at 50% 0%, #f7eddc, #e2cfae 72%); }
+  .kc3__shot:is(.at-rise, .at-corner, .at-right) { left: auto; right: auto; top: auto; max-width: none; }   /* the kit's panel placements, here only where the certificate sits in its tile */
+  .kc3__shot.at-rise { align-items: end; } .kc3__shot.at-corner { align-items: start; } .kc3__shot.at-right { align-items: center; }
+  .kc3__shot img { width: auto; height: auto; max-width: 70%; max-height: 100%; border-radius: 3px; box-shadow: 0 1px 2px rgb(0 0 0 / .14), 0 16px 28px -14px rgb(20 40 50 / .55); transition: transform .6s var(--m-ease-enter, ease); }
+  @media (hover: hover) and (pointer: fine) { .kc:hover .kc3__shot img { transform: scale(1.03); } }
+  .kc3__txt { padding: 14px 12px 10px; }
+  .kc3__txt b { display: block; font: 500 16px/1.3 var(--font-display); letter-spacing: -.01em; min-height: 2.6em; }
+  .all-link { display: inline-flex; align-items: center; gap: 8px; }
+  @media (min-width: 1024px) and (max-height: 820px) {
+    .kgrid { row-gap: 16px; } .kc3__shot { height: 132px; padding: 10px; } .kc3__txt { padding: 10px 8px 6px; } .kc3__txt b { font-size: 15px; min-height: 0; } .kc__meta { font-size: 12.5px; margin-top: 4px; }
+  }
+  @media (max-width: 1023px) { .kgrid--3 > .kc, .kgrid--4 > .kc { grid-column: span 6; } }
+  @media (max-width: 639px) {
+    .kgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .kgrid--3 > .kc, .kgrid--4 > .kc { grid-column: auto; padding: 6px; }
+    .kc3__shot { height: 104px; padding: 8px; border-radius: 10px; } .kc3__shot img { max-width: 84%; }
+    .kc3__txt { padding: 10px 6px 6px; } .kc3__txt b { font-size: 14px; min-height: 0; }
+    .kc__meta { display: grid; gap: 2px; font-size: 12px; margin-top: 4px; }
+    .section-head--row { flex-wrap: wrap; }
+  }
+
+  /* the viewer: the page dims, the certificate large on the left, its facts and the way to verify it on the right, all of them in the strip */
+  .vw { width: min(1180px, 100% - 32px); max-width: none; max-height: calc(100% - 32px); padding: 0; border: 0; border-radius: var(--r-lg); background: var(--bg); color: var(--ink); box-shadow: 0 40px 80px -30px rgb(0 0 0 / .6); overflow: visible; }
+  .vw::backdrop { background: rgb(8 12 14 / .72); }
+  .vw[open] { animation: vw-in .24s var(--m-ease-enter, ease) both; }
+  .vw[open]::backdrop { animation: vw-fade .24s ease both; }
+  @keyframes vw-in { from { opacity: 0; transform: translateY(8px) scale(.985); } }
+  @keyframes vw-fade { from { opacity: 0; } }
+  .vw__in { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 320px; grid-template-rows: minmax(0, 1fr) auto; gap: var(--s-6); padding: var(--s-7); max-height: calc(100svh - 32px); }
+  .vw__x { position: absolute; right: 16px; top: 16px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); display: grid; place-items: center; cursor: pointer; z-index: 2; }
+  .vw__stage { display: grid; place-items: center; min-height: 0; }
+  .vw__img { display: block; max-width: 100%; max-height: min(62svh, 560px); width: auto; height: auto; border-radius: 6px; box-shadow: 0 30px 60px -30px rgb(0 0 0 / .55), 0 0 0 1px rgb(0 0 0 / .06); background: #fff; }
+  .vw__side { display: flex; flex-direction: column; gap: var(--s-3); padding-top: var(--s-7); }
+  .vw__n { margin: 0; font: 600 13px/1 var(--font-mono); color: var(--muted); }
+  .vw__t { margin: 0; font: var(--display-weight) 28px/1.15 var(--font-display); letter-spacing: -.02em; }
+  .vw__o, .vw__x2 { margin: 0; color: var(--muted); } .vw__d { margin: 0; }
+  .vw__acts { display: grid; gap: var(--s-4); justify-items: start; margin-top: var(--s-5); }
+  .vw__acts [hidden] { display: none; }
+  .vw__nav { display: flex; gap: var(--s-2); margin-top: auto; }
+  .vw__btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; }
+  .vw__strip { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0 0 4px; display: flex; gap: 12px; overflow-x: auto; scrollbar-width: thin; }
+  .vw__th { all: unset; box-sizing: border-box; display: grid; place-items: center; width: 92px; height: 66px; flex: none; cursor: pointer; border-radius: 6px; background: color-mix(in oklab, var(--ink) 6%, transparent); opacity: .6; transition: opacity .15s; }
+  .vw__th img { max-width: 84px; max-height: 58px; border-radius: 2px; }
+  .vw__th:hover, .vw__th[aria-current="true"] { opacity: 1; } .vw__th[aria-current="true"] { box-shadow: 0 0 0 2px var(--accent); }
+  .vw__th:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .vw[open], .vw[open]::backdrop { animation: none; } }
+  @media (max-width: 1023px) { .vw__in { grid-template-columns: minmax(0, 1fr); padding: var(--s-6) var(--s-5); overflow-y: auto; } .vw__side { padding-top: 0; } .vw__img { max-height: 46svh; } }
+  @media (max-width: 639px) { .vw__t { font-size: 22px; } .vw__in { padding-top: 72px; } }
+
+  /* back to the top: one glass disc, shown once the hero has gone. On a desktop it sits in the window's right margin,
+     out of the way of every line; on a phone and a tablet just above the tab bar, on the right */
+  .totop { position: fixed; z-index: 39; right: 18px; bottom: 24px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: var(--ink);
+    background: var(--glass); border: 1px solid var(--glass-line); -webkit-backdrop-filter: blur(22px) saturate(1.8); backdrop-filter: blur(22px) saturate(1.8); box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-hi);
+    transition: opacity .2s ease, transform .2s var(--ease, ease), visibility 0s; }
+  .totop.is-away { opacity: 0; transform: translateY(8px); visibility: hidden; pointer-events: none; transition: opacity .2s ease, transform .2s var(--ease, ease), visibility 0s .2s; }
+  @media (hover: hover) and (pointer: fine) { .totop:hover { color: var(--accent); } }
+  @media (max-width: 1023px) { .totop { right: 12px; bottom: calc(var(--bar) + 10px); } }
+  @media (max-width: 1023px) and (max-height: 560px) and (orientation: landscape) { .totop { right: 2px; bottom: 12px; } .tabbar { display: none; } }
+  /* the tab bar, per the phone rules (system.md): every word a 44px target or more, a ring you can see on the focused word,
+     and out of the way while the phone's keyboard is up for the form (a bar riding on the keyboard covers the field being typed in) */
+  .tabbar__a:focus-visible { outline: 2px solid var(--action); outline-offset: -4px; }
+  @media (max-width: 1023px) { html.is-typing .tabbar, html.is-typing .totop { visibility: hidden; } }
+  @media (max-width: 400px) { html[lang="en"] .tabbar__pill { padding-inline: 3px; } html[lang="en"] .tabbar__a span { font-size: 9.5px; letter-spacing: -0.01em; } }
 
   /* experience: the company first, the date as a chip, a rail under three panels */
   #deneyim .panel { --p-h: 220px; height: var(--p-h); overflow: hidden; }
@@ -409,8 +490,9 @@ html[data-theme="dark"] {
       <div class="nav__item"><a class="nav__link" href="#anasayfa">Home</a></div>
       <div class="nav__item"><a class="nav__link" href="#hakkimda">About</a></div>
       <div class="nav__item"><a class="nav__link" href="#deneyim">Experience</a></div>
-      <div class="nav__item"><a class="nav__link" href="#yetenek">Skills</a></div>
       <div class="nav__item"><a class="nav__link" href="#projeler">Projects</a></div>
+      <div class="nav__item"><a class="nav__link" href="#yetenek">Skills</a></div>
+      <div class="nav__item"><a class="nav__link" href="#sertifika">Certificates</a></div>
       <div class="nav__item"><a class="nav__link" href="#tasarim">Designs</a></div>
       <div class="nav__item"><a class="nav__link" href="#iletisim">Contact</a></div>
     </nav>
@@ -555,16 +637,7 @@ html[data-theme="dark"] {
     </div>
   </section>
 
-  <section class="section ground-surface" id="yetenek" style="--hm: 2" data-moment="iris-opens" data-moment-opts='{"from": "base"}' aria-labelledby="yetenek-h">
-    <div class="wrap">
-      <div class="section-head"><h2 id="yetenek-h">My skills. <span class="muted">15 technologies in four groups.</span></h2></div>
-      <div class="frame skills-map">
-        <div class="dg" data-diagram><script type="application/json">{"layout":"hub","alt":"Skills in four groups: backend (C#, ASP.NET, SQL), front end (React, JavaScript, TypeScript, HTML and CSS), other languages (Python, C and C++, Node.js, Bootstrap) and tools (Git, GitHub, Figma).","center":{"label":"Korhan","icon":"text:KE"},"spokes":[{"label":"Backend","icon":"ui:server","children":[{"label":"C#","icon":"c-sharp"},{"label":"ASP.NET","icon":"dotnet"},{"label":"SQL","icon":"sql"}]},{"label":"Front end","icon":"ui:layout-template","children":[{"label":"React","icon":"react"},{"label":"JavaScript","icon":"javascript"},{"label":"TypeScript","icon":"logos:typescript-icon"},{"label":"HTML and CSS","icon":"logos:html-5"}]},{"label":"Languages","icon":"ui:code","children":[{"label":"Python","icon":"python"},{"label":"C and C++","icon":"logos:c-plusplus"},{"label":"Node.js","icon":"logos:nodejs-icon"},{"label":"Bootstrap","icon":"logos:bootstrap"}]},{"label":"Tools","icon":"ui:wrench","children":[{"label":"Git","icon":"logos:git-icon"},{"label":"GitHub","icon":"logos:github-icon"},{"label":"Figma","icon":"figma"}]}]}</script></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section ground-surface" id="projeler" style="--hm: 2" aria-labelledby="projeler-h"><div class="wrap"><div class="section-head section-head--row"><div><h2 id="projeler-h">My projects. <span class="muted">GitHub repositories and a TÜBİTAK-supported model.</span></h2></div><a class="link" href="https://github.com/korhnergun" target="_blank" rel="noopener">See my GitHub profile</a></div><div class="grid grid--top v4" data-peek><ul class="rows span-5"><li data-peek-to="ai" tabindex="0"><span class="rows__n">01</span><span class="rows__name">A model that predicts match results<small>Python · scikit-learn · TÜBİTAK</small></span><a class="rows__value link" href="https://github.com/korhnergun" target="_blank" rel="noopener" aria-label="AI Match Predictor on GitHub">GitHub</a></li><li data-peek-to="web" tabindex="0"><span class="rows__n">02</span><span class="rows__name">A personal website, built with ASP.NET<small>C# · ASP.NET · EF · Bootstrap</small></span><a class="rows__value link" href="https://github.com/korhnergun/PersonalWebSite" target="_blank" rel="noopener" aria-label="PersonalWebSite on GitHub">GitHub</a></li><li data-peek-to="cs" tabindex="0"><span class="rows__n">03</span><span class="rows__name">C# training camp exercises<small>C# · .NET Framework</small></span><a class="rows__value link" href="https://github.com/korhnergun/CSharpEgitimKampi" target="_blank" rel="noopener" aria-label="CSharpEgitimKampi on GitHub">GitHub</a></li><li data-peek-to="ibb" tabindex="0"><span class="rows__n">04</span><span class="rows__name">İBB Ecodation front-end work<small>HTML · CSS · JavaScript</small></span><a class="rows__value link" href="https://github.com/korhnergun/ibb_ecodation_frontend" target="_blank" rel="noopener" aria-label="ibb_ecodation_frontend on GitHub">GitHub</a></li></ul><div class="frame frame--split span-6 start-7 v4__frame" role="img" aria-label="The selected project, shown running"><div class="stage stage--fade-br" aria-hidden="true" data-peek-for="ai"><div class="at-rise fit" style="--fit-max:440px;--ax:max(20px, 50% - 220px);--ay:48px;--ay-sm:16px" data-ui-loop><div class="ui ui-panel ui-term" data-ui="terminal-run">
+  <section class="section" id="projeler" style="--hm: 2" aria-labelledby="projeler-h"><div class="wrap"><div class="section-head section-head--row"><div><h2 id="projeler-h">My projects. <span class="muted">GitHub repositories and a TÜBİTAK-supported model.</span></h2></div><a class="link" href="https://github.com/korhnergun" target="_blank" rel="noopener">See my GitHub profile</a></div><div class="grid grid--top v4" data-peek><ul class="rows span-5"><li data-peek-to="ai" tabindex="0"><span class="rows__n">01</span><span class="rows__name">A model that predicts match results<small>Python · scikit-learn · TÜBİTAK</small></span><a class="rows__value link" href="https://github.com/korhnergun" target="_blank" rel="noopener" aria-label="AI Match Predictor on GitHub">GitHub</a></li><li data-peek-to="web" tabindex="0"><span class="rows__n">02</span><span class="rows__name">A personal website, built with ASP.NET<small>C# · ASP.NET · EF · Bootstrap</small></span><a class="rows__value link" href="https://github.com/korhnergun/PersonalWebSite" target="_blank" rel="noopener" aria-label="PersonalWebSite on GitHub">GitHub</a></li><li data-peek-to="cs" tabindex="0"><span class="rows__n">03</span><span class="rows__name">C# training camp exercises<small>C# · .NET Framework</small></span><a class="rows__value link" href="https://github.com/korhnergun/CSharpEgitimKampi" target="_blank" rel="noopener" aria-label="CSharpEgitimKampi on GitHub">GitHub</a></li><li data-peek-to="ibb" tabindex="0"><span class="rows__n">04</span><span class="rows__name">İBB Ecodation front-end work<small>HTML · CSS · JavaScript</small></span><a class="rows__value link" href="https://github.com/korhnergun/ibb_ecodation_frontend" target="_blank" rel="noopener" aria-label="ibb_ecodation_frontend on GitHub">GitHub</a></li></ul><div class="frame frame--split span-6 start-7 v4__frame" role="img" aria-label="The selected project, shown running"><div class="stage stage--fade-br" aria-hidden="true" data-peek-for="ai"><div class="at-rise fit" style="--fit-max:440px;--ax:max(20px, 50% - 220px);--ay:48px;--ay-sm:16px" data-ui-loop><div class="ui ui-panel ui-term" data-ui="terminal-run">
               <div class="ui-term__head"><span class="ui-dots"><i></i><i></i><i></i></span><span class="ui-term__title">ai-match-predictor</span><span class="ui-meta">zsh</span><span class="ui-spacer"></span></div>
               <div class="ui-term__screen" data-term-screen>
                 <div class="ui-term__track" data-term-track>
@@ -609,6 +682,47 @@ html[data-theme="dark"] {
                 <li class="ui-file is-done"><span class="ui-file__icon"><img data-icon="file:folder" src="../assets/icons/folder.svg" alt=""></span><span class="ui-file__name">util</span><span class="ui-file__kind">Folder</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
               </ul>
             </div></div></div></div></div></div></section>
+
+  <section class="section ground-surface" id="yetenek" style="--hm: 2" data-moment="iris-opens" data-moment-opts='{"from": "base"}' aria-labelledby="yetenek-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="yetenek-h">My skills. <span class="muted">15 technologies in four groups.</span></h2></div>
+      <div class="frame skills-map">
+        <div class="dg" data-diagram><script type="application/json">{"layout":"hub","alt":"Skills in four groups: backend (C#, ASP.NET, SQL), front end (React, JavaScript, TypeScript, HTML and CSS), other languages (Python, C and C++, Node.js, Bootstrap) and tools (Git, GitHub, Figma).","center":{"label":"Korhan","icon":"text:KE"},"spokes":[{"label":"Backend","icon":"ui:server","children":[{"label":"C#","icon":"c-sharp"},{"label":"ASP.NET","icon":"dotnet"},{"label":"SQL","icon":"sql"}]},{"label":"Front end","icon":"ui:layout-template","children":[{"label":"React","icon":"react"},{"label":"JavaScript","icon":"javascript"},{"label":"TypeScript","icon":"logos:typescript-icon"},{"label":"HTML and CSS","icon":"logos:html-5"}]},{"label":"Languages","icon":"ui:code","children":[{"label":"Python","icon":"python"},{"label":"C and C++","icon":"logos:c-plusplus"},{"label":"Node.js","icon":"logos:nodejs-icon"},{"label":"Bootstrap","icon":"logos:bootstrap"}]},{"label":"Tools","icon":"ui:wrench","children":[{"label":"Git","icon":"logos:git-icon"},{"label":"GitHub","icon":"logos:github-icon"},{"label":"Figma","icon":"figma"}]}]}</script></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ground-surface" id="sertifika" aria-labelledby="sertifika-h">
+    <div class="wrap">
+      <div class="section-head section-head--row"><div><h2 id="sertifika-h">My certificates. <span class="muted">Six of them.</span></h2></div><a class="link all-link" href="#sertifika-goruntuleyici" data-doc="0" aria-haspopup="dialog">View all (6)<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+      <div class="grid kgrid kgrid--3">
+        <a class="card kc kc3" href="../assets/sertifikalar/prompt.pdf" data-doc="0" data-img="../assets/sertifikalar/prompt.jpg" data-date="21 November 2026" data-x="Geleceği Yazanlar exam · Turkcell Akademi" data-v="" aria-haspopup="dialog">
+          <span class="kc3__shot g-0 at-rise"><img src="../assets/sertifikalar/prompt-k.jpg" alt="Prompt Engineering certificate of achievement" width="640" height="453" loading="lazy"></span>
+          <span class="kc3__txt"><b>Prompt Engineering</b><span class="kc__meta"><span>Turkcell Geleceği Yazanlar</span><span class="cert-date">November 2026</span></span></span>
+        </a>
+        <a class="card kc kc3" href="../assets/sertifikalar/python201.pdf" data-doc="1" data-img="../assets/sertifikalar/python201.jpg" data-date="21 November 2026" data-x="Geleceği Yazanlar exam · Turkcell Akademi" data-v="" aria-haspopup="dialog">
+          <span class="kc3__shot g-1 at-corner"><img src="../assets/sertifikalar/python201-k.jpg" alt="Python Programming 201 certificate of achievement" width="640" height="453" loading="lazy"></span>
+          <span class="kc3__txt"><b>Python Programming 201</b><span class="kc__meta"><span>Turkcell Geleceği Yazanlar</span><span class="cert-date">November 2026</span></span></span>
+        </a>
+        <a class="card kc kc3" href="../assets/sertifikalar/python101.pdf" data-doc="2" data-img="../assets/sertifikalar/python101.jpg" data-date="21 November 2026" data-x="Geleceği Yazanlar exam · Turkcell Akademi" data-v="" aria-haspopup="dialog">
+          <span class="kc3__shot g-0 at-right"><img src="../assets/sertifikalar/python101-k.jpg" alt="Python Programming 101 certificate of achievement" width="640" height="453" loading="lazy"></span>
+          <span class="kc3__txt"><b>Python Programming 101</b><span class="kc__meta"><span>Turkcell Geleceği Yazanlar</span><span class="cert-date">November 2026</span></span></span>
+        </a>
+        <a class="card kc kc3" href="../assets/sertifikalar/mvc5.pdf" data-doc="3" data-img="../assets/sertifikalar/mvc5.jpg" data-date="3 July 2025" data-x="Instructor: Murat Yücedağ · 7.5 hours" data-v="https://ude.my/UC-f3cef625-67f6-4621-9156-5460bfeff0fb" aria-haspopup="dialog">
+          <span class="kc3__shot g-1 at-rise"><img src="../assets/sertifikalar/mvc5-k.jpg" alt="Certificate of completion: a dynamic CV site with an admin panel in MVC5, from scratch" width="640" height="476" loading="lazy"></span>
+          <span class="kc3__txt"><b>A Dynamic CV Site with an Admin Panel in MVC5, from Scratch</b><span class="kc__meta"><span>Udemy</span><span class="cert-date">July 2025</span></span></span>
+        </a>
+        <a class="card kc kc3" href="../assets/sertifikalar/efset.pdf" data-doc="4" data-img="../assets/sertifikalar/efset.jpg" data-date="22 February 2025" data-x="Score 56/100 · B2 Upper Intermediate (reading and listening)" data-v="https://cert.efset.org/hpbfGy" aria-haspopup="dialog">
+          <span class="kc3__shot g-0 at-corner"><img src="../assets/sertifikalar/efset-k.jpg" alt="EF SET English Certificate, B2 Upper Intermediate" width="420" height="594" loading="lazy"></span>
+          <span class="kc3__txt"><b>English Certificate</b><span class="kc__meta"><span>EF SET</span><span class="cert-date">February 2025</span></span></span>
+        </a>
+        <a class="card kc kc3" href="../assets/sertifikalar/git.pdf" data-doc="5" data-img="../assets/sertifikalar/git.jpg" data-date="17 July 2024" data-x="Instructor: Emre Altunbilek · 5.5 hours" data-v="https://ude.my/UC-b3cb3476-cf91-47e9-9a10-c10ab635f075" aria-haspopup="dialog">
+          <span class="kc3__shot g-1 at-right"><img src="../assets/sertifikalar/git-k.jpg" alt="Certificate of completion: using Git and GitHub with Sourcetree" width="640" height="476" loading="lazy"></span>
+          <span class="kc3__txt"><b>Using Git and GitHub with Sourcetree</b><span class="kc__meta"><span>Udemy</span><span class="cert-date">July 2024</span></span></span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <section class="section" id="tasarim" aria-labelledby="tasarim-h">
     <div class="wrap">
@@ -666,7 +780,7 @@ html[data-theme="dark"] {
           <a class="nav__logo" href="#top">Korhan Ergün TUNÇELLİ</a>
           <p class="footer__lede">Computer engineer, İzmir.</p>
         </div>
-        <div class="span-2 start-7 footer__col"><h3>Me</h3><ul><li><a href="#hakkimda">About</a></li><li><a href="#deneyim">Experience</a></li><li><a href="#yetenek">Skills</a></li></ul></div>
+        <div class="span-2 start-7 footer__col"><h3>Me</h3><ul><li><a href="#hakkimda">About</a></li><li><a href="#deneyim">Experience</a></li><li><a href="#yetenek">Skills</a></li><li><a href="#sertifika">Certificates</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Work</h3><ul><li><a href="#projeler">Projects</a></li><li><a href="#tasarim">Designs</a></li><li><a href="#iletisim">Contact</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Links</h3><ul><li><a href="https://github.com/korhnergun" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/korhnergun/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/korhnergun" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       </div>
@@ -678,13 +792,30 @@ html[data-theme="dark"] {
   </div>
 </footer>
 
+<dialog class="vw" id="sertifika-goruntuleyici" aria-labelledby="vw-t">
+  <div class="vw__in">
+    <button class="vw__x" type="button" aria-label="Close"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    <div class="vw__stage"><img class="vw__img" alt=""></div>
+    <div class="vw__side">
+      <p class="vw__n" aria-live="polite"></p>
+      <h3 id="vw-t" class="vw__t"></h3>
+      <p class="vw__o"></p>
+      <p class="vw__d cert-date"></p>
+      <p class="vw__x2"></p>
+      <div class="vw__acts"><a class="btn btn--primary vw__verify" href="#sertifika" target="_blank" rel="noopener">Verify the certificate<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="link vw__pdf" href="#sertifika" download>Download the PDF</a></div>
+      <div class="vw__nav"><button class="vw__btn" type="button" data-step="-1" aria-label="Previous certificate"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="vw__btn" type="button" data-step="1" aria-label="Next certificate"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+    </div>
+    <ol class="vw__strip"></ol>
+  </div>
+</dialog>
+<a class="totop" href="#top" aria-label="Back to the top"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>
 <nav class="tabbar" aria-label="Sections"><div class="tabbar__pill">
   <span class="tabbar__ind" aria-hidden="true"></span>
-  <a class="tabbar__a" href="#anasayfa"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></a>
-  <a class="tabbar__a" href="#hakkimda"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>About</span></a>
+    <a class="tabbar__a" href="#hakkimda"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>About</span></a>
   <a class="tabbar__a" href="#deneyim"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg><span>Experience</span></a>
-  <a class="tabbar__a" href="#yetenek"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v2m0-20v2m5 16v2m0-20v2M2 12h2m-2 5h2M2 7h2m16 5h2m-2 5h2M20 7h2M7 20v2M7 2v2"/><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="8" height="8" x="8" y="8" rx="1"/></svg><span>Skills</span></a>
   <a class="tabbar__a" href="#projeler"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 19a5 5 0 0 1-5-5v8"/><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5"/><circle cx="13" cy="12" r="2"/><circle cx="20" cy="19" r="2"/></svg><span>Projects</span></a>
+  <a class="tabbar__a" href="#yetenek"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v2m0-20v2m5 16v2m0-20v2M2 12h2m-2 5h2M2 7h2m16 5h2m-2 5h2M20 7h2M7 20v2M7 2v2"/><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="8" height="8" x="8" y="8" rx="1"/></svg><span>Skills</span></a>
+  <a class="tabbar__a" href="#sertifika"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg><span>Certificates</span></a>
   <a class="tabbar__a" href="#tasarim"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20a10 9 0 0 1 10 9a5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg><span>Designs</span></a>
   <a class="tabbar__a" href="#iletisim"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg><span>Contact</span></a>
 </div></nav>
@@ -723,7 +854,7 @@ html[data-theme="dark"] {
   (function () {
     var still = matchMedia('(prefers-reduced-motion: reduce)'), current = null;
     document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('header.nav a[href^="#"], .tabbar a[href^="#"], footer a[href^="#"]');
+      var a = e.target.closest && e.target.closest('header.nav a[href^="#"], .tabbar a[href^="#"], footer a[href^="#"], a.totop');
       if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
       var id = a.getAttribute('href').slice(1), el = id && document.getElementById(id);
       if (!el || !document.startViewTransition || still.matches) return;   /* the browser's own jump */
@@ -770,7 +901,7 @@ html[data-theme="dark"] {
     }
     var here = null;
     function show(id) { if (id === 'contact') id = 'iletisim';   /* the closing CV band belongs to the contact word */
-      if (!id) return; here = id; bars.forEach(function (b) { var a = b.links[id]; if (a && a !== b.cur) place(b, a); }); }
+      if (!id) return; here = id; bars.forEach(function (b) { var a = b.links[id] || null; if (a !== b.cur) place(b, a); }); }   /* a bar with no word for this section (the hero, in the tab bar) shows no pill */
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) show(e.target.id); });
     }, { rootMargin: '-48% 0px -50% 0px' });
@@ -783,6 +914,69 @@ html[data-theme="dark"] {
     /* a tap on a word moves its pill at once, before the page has scrolled there */
     bars.forEach(function (b) { Object.keys(b.links).forEach(function (id) { b.links[id].addEventListener('click', function () { show(id); }); }); });
     addEventListener('resize', function () { var id = here; bars.forEach(function (b) { b.w0 = 0; b.cur = null; }); here = null; show(id || 'anasayfa'); });
+  })();
+</script>
+<script>
+  /* the certificates viewer: a card's certificate grows from where it lay to the viewer's place (transform and opacity only);
+     prev and next, the arrow keys and the strip move through all of them; Esc, the cross or a click outside close it */
+  (function () {
+    var dlg = document.getElementById('sertifika-goruntuleyici'); if (!dlg || !dlg.showModal) return;
+    var cards = [].slice.call(document.querySelectorAll('#sertifika .kc[data-doc]'));
+    var img = dlg.querySelector('.vw__img'), strip = dlg.querySelector('.vw__strip'), cur = 0, from = null;
+    var still = matchMedia('(prefers-reduced-motion: reduce)');
+    cards.forEach(function (c, i) {
+      var li = document.createElement('li'), b = document.createElement('button'), t = c.querySelector('img').cloneNode();
+      b.type = 'button'; b.className = 'vw__th'; b.setAttribute('aria-label', c.querySelector('b').textContent); t.alt = ''; t.removeAttribute('loading');
+      b.appendChild(t); li.appendChild(b); strip.appendChild(li);
+      b.addEventListener('click', function () { fill(i); });
+    });
+    var ths = [].slice.call(strip.querySelectorAll('.vw__th'));
+    function fill(n) {
+      cur = (n + cards.length) % cards.length;
+      var c = cards[cur];
+      img.src = c.dataset.img; img.alt = c.querySelector('img').alt;
+      dlg.querySelector('.vw__n').textContent = (cur + 1) + ' / ' + cards.length;
+      dlg.querySelector('.vw__t').textContent = c.querySelector('b').textContent;
+      dlg.querySelector('.vw__o').textContent = c.querySelector('.kc__meta span').textContent;
+      dlg.querySelector('.vw__d').textContent = c.dataset.date;
+      dlg.querySelector('.vw__x2').textContent = c.dataset.x;
+      var v = dlg.querySelector('.vw__verify'); v.hidden = !c.dataset.v; if (c.dataset.v) v.href = c.dataset.v;
+      dlg.querySelector('.vw__pdf').href = c.getAttribute('href');
+      ths.forEach(function (b, i) { b.setAttribute('aria-current', i === cur ? 'true' : 'false'); });
+      ths[cur].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }
+    function fly(src) {
+      if (!src || still.matches || !img.animate) return;
+      var a = src.getBoundingClientRect(), b = img.getBoundingClientRect();
+      if (!a.width || !b.width) return;
+      img.animate([{ transform: 'translate(' + (a.left - b.left) + 'px,' + (a.top - b.top) + 'px) scale(' + (a.width / b.width) + ')', transformOrigin: '0 0' },
+                   { transform: 'none', transformOrigin: '0 0' }], { duration: 420, easing: 'cubic-bezier(.22,1,.36,1)' });
+    }
+    function open(n, src) {
+      from = src; fill(n); dlg.showModal();
+      var go = function () { fly(src && src.querySelector('img')); };
+      if (img.complete) go(); else img.addEventListener('load', go, { once: true });
+    }
+    document.querySelectorAll('#sertifika [data-doc]').forEach(function (a) {
+      a.addEventListener('click', function (e) { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); open(+a.dataset.doc, a.classList.contains('kc') ? a : null); });
+    });
+    dlg.querySelector('.vw__x').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', function () { if (from) from.focus(); });
+    dlg.querySelectorAll('[data-step]').forEach(function (b) { b.addEventListener('click', function () { fill(cur + +b.dataset.step); }); });
+    dlg.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') fill(cur + 1); if (e.key === 'ArrowLeft') fill(cur - 1); });
+  })();
+  /* the phone's keyboard: while a field is being typed in, the tab bar and the back-to-top disc step aside */
+  (function () {
+    var root = document.documentElement, coarse = matchMedia('(pointer: coarse)');
+    document.addEventListener('focusin', function (e) { if (coarse.matches && e.target.matches('input, textarea, select')) root.classList.add('is-typing'); });
+    document.addEventListener('focusout', function () { root.classList.remove('is-typing'); });
+  })();
+  /* back to the top: the disc steps away while the hero is on screen */
+  (function () {
+    var b = document.querySelector('.totop'), hero = document.getElementById('anasayfa');
+    if (!b || !hero || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (es) { es.forEach(function (e) { b.classList.toggle('is-away', e.isIntersecting); b.toggleAttribute('inert', e.isIntersecting); }); }, { rootMargin: '0px 0px -40% 0px' }).observe(hero);
   })();
 </script>
 <script>

@@ -44,7 +44,6 @@ PAIRS = [
     ('aria-label="Koyu temaya geç"', 'aria-label="Switch to dark theme"', 2),
     ('aria-label="Menü"', 'aria-label="Menu"', 1),
     ('aria-label="Dil seçimi"', 'aria-label="Language"', 2),
-    ('<span>Giriş</span>', '<span>Home</span>', 1),
     ('<span>Hakkımda</span>', '<span>About</span>', 1),
     ('<span>Deneyim</span>', '<span>Experience</span>', 1),
     ('<span>Yetenek</span>', '<span>Skills</span>', 1),
@@ -207,12 +206,46 @@ PAIRS = [
     ('<h3>Bağlantılar</h3>', '<h3>Links</h3>', 1),
     ('Ürün adları ve logolar sahiplerinin ticari markalarıdır.', 'Product names and logos are trademarks of their respective owners.', 1),
 
+    # --- certificates (titles translated; issuers, instructors and programme names kept)
+    ('href="#sertifika">Sertifikalar</a>', 'href="#sertifika">Certificates</a>', 2),
+    ('<span>Sertifika</span>', '<span>Certificates</span>', 1),
+    ('<h2 id="sertifika-h">Sertifikalarım. <span class="muted">Altı belge.</span></h2>', '<h2 id="sertifika-h">My certificates. <span class="muted">Six of them.</span></h2>', 1),
+    ('aria-haspopup="dialog">Tümünü görüntüleyin (6)<svg', 'aria-haspopup="dialog">View all (6)<svg', 1),
+    ('<b>Prompt Mühendisliği</b>', '<b>Prompt Engineering</b>', 1),
+    ('alt="Prompt Mühendisliği başarı belgesi"', 'alt="Prompt Engineering certificate of achievement"', 1),
+    ('<b>Python Programlama 201</b>', '<b>Python Programming 201</b>', 1),
+    ('alt="Python Programlama 201 başarı belgesi"', 'alt="Python Programming 201 certificate of achievement"', 1),
+    ('<b>Python Programlama 101</b>', '<b>Python Programming 101</b>', 1),
+    ('alt="Python Programlama 101 başarı belgesi"', 'alt="Python Programming 101 certificate of achievement"', 1),
+    ('<b>Mvc5 ile Sıfırdan Admin Panelli Dinamik CV Sitesi</b>', '<b>A Dynamic CV Site with an Admin Panel in MVC5, from Scratch</b>', 1),
+    ('alt="Mvc5 ile Sıfırdan Admin Panelli Dinamik CV Sitesi bitirme sertifikası"', 'alt="Certificate of completion: a dynamic CV site with an admin panel in MVC5, from scratch"', 1),
+    ('<b>Sourcetree ile Git ve GitHub Kullanımı</b>', '<b>Using Git and GitHub with Sourcetree</b>', 1),
+    ('alt="Sourcetree ile Git ve GitHub Kullanımı bitirme sertifikası"', 'alt="Certificate of completion: using Git and GitHub with Sourcetree"', 1),
+    ('data-x="Geleceği Yazanlar sınavı · Turkcell Akademi"', 'data-x="Geleceği Yazanlar exam · Turkcell Akademi"', 3),
+    ('data-x="Eğitmen: Murat Yücedağ · 7,5 saat"', 'data-x="Instructor: Murat Yücedağ · 7.5 hours"', 1),
+    ('data-x="Eğitmen: Emre Altunbilek · 5,5 saat"', 'data-x="Instructor: Emre Altunbilek · 5.5 hours"', 1),
+    ('data-x="56/100 puan · B2 Upper Intermediate (okuma ve dinleme)"', 'data-x="Score 56/100 · B2 Upper Intermediate (reading and listening)"', 1),
+    ('data-date="21 Kasım 2026"', 'data-date="21 November 2026"', 3),
+    ('data-date="3 Temmuz 2025"', 'data-date="3 July 2025"', 1),
+    ('data-date="22 Şubat 2025"', 'data-date="22 February 2025"', 1),
+    ('data-date="17 Temmuz 2024"', 'data-date="17 July 2024"', 1),
+    ('<span class="cert-date">Kasım 2026</span>', '<span class="cert-date">November 2026</span>', 3),
+    ('<span class="cert-date">Temmuz 2025</span>', '<span class="cert-date">July 2025</span>', 1),
+    ('<span class="cert-date">Şubat 2025</span>', '<span class="cert-date">February 2025</span>', 1),
+    ('<span class="cert-date">Temmuz 2024</span>', '<span class="cert-date">July 2024</span>', 1),
+    ('aria-label="Kapatın"', 'aria-label="Close"', 1),
+    ('target="_blank" rel="noopener">Sertifikayı doğrulayın<svg', 'target="_blank" rel="noopener">Verify the certificate<svg', 1),
+    (">PDF'i indirin</a>", '>Download the PDF</a>', 1),
+    ('aria-label="Önceki sertifika"', 'aria-label="Previous certificate"', 1),
+    ('aria-label="Sonraki sertifika"', 'aria-label="Next certificate"', 1),
+    ('aria-label="Sayfanın başına dönün"', 'aria-label="Back to the top"', 1),
+
     # --- scripts
     ("root.dataset.theme === 'dark' ? 'Açık temaya geç' : 'Koyu temaya geç'", "root.dataset.theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'", 1),
 ]
 
 # Türkçe harf içeren ama çevrilmemesi gereken adlar (kişi, kurum, şehir, dosya adları)
-KEEP = ['Korhan Ergün TUNÇELLİ', 'Tekirdağ Namık Kemal', 'İzmir', 'TÜBİTAK', 'İBB', 'Cenk Öner', 'Yılmaz Şahin', 'TR, Türkçe', '"İzmir"', 'Ergün']
+KEEP = ['Geleceği Yazanlar', 'Turkcell Akademi', 'Murat Yücedağ', 'Emre Altunbilek', 'Korhan Ergün TUNÇELLİ', 'Tekirdağ Namık Kemal', 'İzmir', 'TÜBİTAK', 'İBB', 'Cenk Öner', 'Yılmaz Şahin', 'TR, Türkçe', '"İzmir"', 'Ergün']
 # Türkçede çok geçen, aksansız sözcükler: üretilen sayfada görünür metinde kalmamalı
 TR_WORDS = r'\b(ve|ile|için|bir|bu|staj|proje|projeler|yazın|görün|deneyim|tasarım|tasarımlar|iletişim|hakkımda|ortalama|diller|durum|musait|sehir|klasör|dosya|sayfa|adım)\b'
 
@@ -231,7 +264,7 @@ def main():
         have = s.count(tr)
         if have != count: fail(f'{have} kez bulundu, {count} bekleniyordu: {tr[:90]}')
         for num in re.findall(r'\d+(?:[.,]\d+)?', re.sub(r'<[^>]+>', ' ', tr)):
-            if num not in en: fail(f'"{num}" çeviride yok: {en[:90]}')
+            if num not in en and num.replace(',', '.') not in en: fail(f'"{num}" çeviride yok: {en[:90]}')
         s = s.replace(tr, en)
 
     # 3) the page itself: language, its address, the language switch
@@ -249,7 +282,7 @@ def main():
     s = s.replace(tr_on, en_on)
 
     # 4) the page lives one folder down: its files are one level up
-    for a in ('href="assets/', 'src="assets/', 'href="favicon-', 'href="apple-touch-icon', 'href="Korhan%20'):
+    for a in ('href="assets/', 'src="assets/', 'data-img="assets/', 'href="favicon-', 'href="apple-touch-icon', 'href="Korhan%20'):
         s = s.replace(a, a.replace('="', '="../', 1))
     if re.search(r'(?:src|href)="(?!\.\./|https?:|mailto:|#|\./|data:)[^"]+"', s):
         bad = re.findall(r'(?:src|href)="(?!\.\./|https?:|mailto:|#|\./|data:)[^"]+"', s)[:5]
