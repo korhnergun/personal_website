@@ -9,7 +9,6 @@ Bu dosya `python ceviri/en.py` ile İngilizce sayfayla birlikte yeniden yazılı
 | Korhan Ergün TUNÇELLİ: bilgisayar mühendisi | Korhan Ergün TUNÇELLİ: computer engineer |
 | Web ve backend geliştirici; stajlar, projeler, yetenekler ve tasarımlar. | Web and backend developer; internships, projects, skills and designs. |
 | İçeriğe geç | Skip to content |
-| Korhan Ergün TUNÇELLİ, başa dön | Korhan Ergün TUNÇELLİ, back to top |
 | Ana menü | Main menu |
 | Ana sayfa | Home |
 | Hakkımda | About |

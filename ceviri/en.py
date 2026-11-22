@@ -31,7 +31,6 @@ PAIRS = [
 
     # --- top bar, menu, tab bar, footer links
     ('>İçeriğe geç</a>', '>Skip to content</a>', 1),
-    ('aria-label="Korhan Ergün TUNÇELLİ, başa dön"', 'aria-label="Korhan Ergün TUNÇELLİ, back to top"', 1),
     ('aria-label="Ana menü"', 'aria-label="Main menu"', 1),
     ('href="#anasayfa">Ana sayfa</a>', 'href="#anasayfa">Home</a>', 1),
     ('href="#hakkimda">Hakkımda</a>', 'href="#hakkimda">About</a>', 2),
